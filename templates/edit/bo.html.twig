@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1> Gestion du back office </h1>
+        
+        
+    <ul>
+        <li>MEDIA <a href="{{ path('edit_media_index')}}">VOIR</a></li>
+        <li>CATEGORIES <a href="{{ path('editor_category_index')}}">VOIR</a></li>
+        <li>UTILISATEURS <a href="{{ path('editor_category_index')}}">VOIR</a></li>
+    </ul>
+</div>
+{% endblock %}
