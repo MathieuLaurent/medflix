@@ -17,7 +17,7 @@ class EditorCategoryController extends AbstractController
     #[Route('/', name: 'editor_category_index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('editor_category/index.html.twig', [
+        return $this->render('edit/editor_category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ class EditorCategoryController extends AbstractController
             return $this->redirectToRoute('editor_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('editor_category/new.html.twig', [
+        return $this->renderForm('edit/editor_category/new.html.twig', [
             'category' => $category,
             'form' => $form,
         ]);
@@ -45,7 +45,7 @@ class EditorCategoryController extends AbstractController
     #[Route('/{id}', name: 'editor_category_show', methods: ['GET'])]
     public function show(Category $category): Response
     {
-        return $this->render('editor_category/show.html.twig', [
+        return $this->render('edit/editor_category/show.html.twig', [
             'category' => $category,
         ]);
     }
@@ -62,7 +62,7 @@ class EditorCategoryController extends AbstractController
             return $this->redirectToRoute('editor_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('editor_category/edit.html.twig', [
+        return $this->renderForm('edit/editor_category/edit.html.twig', [
             'category' => $category,
             'form' => $form,
         ]);

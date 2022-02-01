@@ -11285,6 +11285,8 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+<<<<<<< HEAD
+=======
 }
 
 
@@ -11297,4 +11299,5 @@ textarea.form-control-lg {
   height: 50px;
   width: auto;
   margin-right: 5%;
+>>>>>>> d29050b104b1a1ebf5afa0f4a4773f02df9e1037
 }
