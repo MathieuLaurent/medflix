@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/edit/media')]
+#[Route('/editor/media')]
 class EditorMediaController extends AbstractController
 {
     #[Route('/', name: 'edit_media_index', methods: ['GET'])]
