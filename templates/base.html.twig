@@ -11,8 +11,10 @@
         <script src="{{ asset('js/script.js') }}"></script>
     </head>
     <body>
+        {% include 'inc/header.html.twig' %}
+
         {% block body %}{% endblock %}
 
-         {% include 'inc/footer.html.twig' %}
+        {% include 'inc/footer.html.twig' %}
     </body>
 </html>

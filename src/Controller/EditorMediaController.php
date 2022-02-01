@@ -12,12 +12,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/edit/media')]
-class EditMediaController extends AbstractController
+class EditorMediaController extends AbstractController
 {
     #[Route('/', name: 'edit_media_index', methods: ['GET'])]
     public function index(MediaRepository $mediaRepository): Response
     {
-        return $this->render('edit_media/index.html.twig', [
+        return $this->render('edit/edit_media/index.html.twig', [
             'media' => $mediaRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ class EditMediaController extends AbstractController
             return $this->redirectToRoute('edit_media_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('edit_media/new.html.twig', [
+        return $this->renderForm('edit/edit_media/new.html.twig', [
             'medium' => $medium,
             'form' => $form,
         ]);
@@ -45,7 +45,7 @@ class EditMediaController extends AbstractController
     #[Route('/{id}', name: 'edit_media_show', methods: ['GET'])]
     public function show(Media $medium): Response
     {
-        return $this->render('edit_media/show.html.twig', [
+        return $this->render('edit/edit_media/show.html.twig', [
             'medium' => $medium,
         ]);
     }
@@ -62,7 +62,7 @@ class EditMediaController extends AbstractController
             return $this->redirectToRoute('edit_media_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('edit_media/edit.html.twig', [
+        return $this->renderForm('edit/edit_media/edit.html.twig', [
             'medium' => $medium,
             'form' => $form,
         ]);
