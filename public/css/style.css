@@ -84,7 +84,7 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
+  background-color: var(--bs-gray-dark);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -11285,4 +11285,19 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+<<<<<<< HEAD
+=======
+}
+
+
+
+
+
+
+#imgLogo{
+  border-radius: 50px;
+  height: 50px;
+  width: auto;
+  margin-right: 5%;
+>>>>>>> d29050b104b1a1ebf5afa0f4a4773f02df9e1037
 }

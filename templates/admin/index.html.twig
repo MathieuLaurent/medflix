@@ -9,12 +9,13 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
+    <h1> Gestion du back office </h1>
+        
+        
     <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64.1/www/medflix/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64.1/www/medflix/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
+        <li>MEDIA <a href="{{ path('edit_media_index')}}">VOIR</a></li>
+        <li>CATEGORIES <a href="{{ path('editor_category_index')}}">VOIR</a></li>
+        <li>UTILISATEURS <a href="{{ path('editor_category_index')}}">VOIR</a></li>
     </ul>
 </div>
 {% endblock %}
