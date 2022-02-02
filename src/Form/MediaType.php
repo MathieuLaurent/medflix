@@ -2,13 +2,13 @@
 
 namespace App\Form;
 
-use App\Entity\User;
 use App\Entity\Media;
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class MediaType extends AbstractType
 {
@@ -16,7 +16,7 @@ class MediaType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('link')
+            ->add('link', FileType::class)
             ->add('category', EntityType::class,[
                 'class' => Category::class,
                 'expanded' => true,

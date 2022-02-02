@@ -4,8 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Media;
 use App\Form\MediaType;
-use App\Repository\MediaRepository;
+use Gedmo\Sluggable\Util\Urlizer;
 use App\Repository\UserRepository;
+use App\Repository\MediaRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,6 +40,17 @@ class EditorMediaController extends AbstractController
             $medium->setUserAuthor($user);
 
             $medium->setCreatedAt(new \DateTimeImmutable('now'));
+
+            $uploadedFile = $form['link']->getData();
+            
+            if($uploadedFile && ($uploadedFile->guessExtension() == "jpg" || $uploadedFile->guessExtension() == "png" || $uploadedFile->guessExtension() == "jpeg" || $uploadedFile->guessExtension() == "gif")){
+                $destination = $this->getParameter('kernel.project_dir').'/public/img';
+                
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move($destination, $newFilename);
+                $medium->setLink($newFilename);
+            }
 
             $entityManager->persist($medium);
             $entityManager->flush();
