@@ -51,6 +51,22 @@ class EditorMediaController extends AbstractController
                 $uploadedFile->move($destination, $newFilename);
                 $medium->setLink($newFilename);
             }
+            elseif($uploadedFile && ($uploadedFile->guessExtension() == "pdf")){
+                $destination = $this->getParameter('kernel.project_dir').'/public/pdf';
+                
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move($destination, $newFilename);
+                $medium->setLink($newFilename);
+            }
+            elseif($uploadedFile && ($uploadedFile->guessExtension() == "x-msvideo" || $uploadedFile->guessExtension() == "webm" || $uploadedFile->guessExtension() == "mpeg")){
+                $destination = $this->getParameter('kernel.project_dir').'/public/video';
+                
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move($destination, $newFilename);
+                $medium->setLink($newFilename);
+            }
 
             $entityManager->persist($medium);
             $entityManager->flush();
