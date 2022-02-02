@@ -82,6 +82,10 @@ header {
     color: var(--orange);
 }
 
+.nav-id {
+    color: var(--font-color);
+}
+
 .btn { 
     background: var(--green);
     color: var(--font-color);
@@ -103,6 +107,8 @@ header {
 
 .form-control { 
     border: var(--border-color);
+    width: 85vh;
+    height: 2rem;
     transition: .15s;
 }
 
@@ -124,6 +130,11 @@ header {
 .dropdown-item:hover {
     background: var(--main-bg);
     color: var(--font-color);
+}
+
+.container-custom { 
+    width: 50%;
+    height: auto;
 }
 
 /*==================== FOOTER CSS CLASS ====================*/
