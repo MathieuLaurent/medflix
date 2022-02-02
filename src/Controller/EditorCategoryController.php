@@ -31,7 +31,7 @@ class EditorCategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $entityManager->persist($category);
             $entityManager->flush();
 
@@ -71,9 +71,17 @@ class EditorCategoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'editor_category_delete', methods: ['POST'])]
-    public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Category $category, EntityManagerInterface $entityManager, CategoryRepository $categoryRepository, int $id): Response
     {
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+
+            
+            $categoryEnfant = $categoryRepository->findBy(['category' => $id]);
+
+
+            foreach($categoryEnfant as $cat){
+                $cat->setCategory(null);
+            }
 
             $entityManager->remove($category);
             $entityManager->flush();

@@ -35,7 +35,9 @@ class EditorMediaController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $medium->setUserAuthor($user->getFirstname());
+
+            $medium->setUserAuthor($user);
+
             $medium->setCreatedAt(new \DateTimeImmutable('now'));
 
             $entityManager->persist($medium);
