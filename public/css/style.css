@@ -31,6 +31,7 @@ body {
     background: var(--main-bg);
     color: var(--font-color);
     font-family: 'Playfair Display', serif;
+    min-height: 80vh;
 }
 
 h1, h2, h3, h4, h5, h6, label { 
@@ -74,9 +75,8 @@ header {
 
 }
 
-.nav-link:hover { 
+.nav-link:hover, .nav-link:focus { 
     color: var(--red);
-    opacity: 1;
 }
 
 .nav-user {
@@ -91,8 +91,9 @@ header {
 
 }
 
-btn:hover { 
+.btn:hover { 
     opacity: 1;
+    color: var(--font-color);
 }
 
 .search { 
@@ -103,13 +104,28 @@ btn:hover {
 
 .form-control { 
     border: var(--border-color);
+    transition: .15s;
 }
 
-.form-control:active { 
+.form-control:focus { 
     background-color: var(--main-bg);
 }
 
-  
+.dropdown-item { 
+    background-color: var(--alt-bg);
+    color: var(--green);
+    border: 1px solid var(--main-bg);
+    transition: 600ms; 
+}
+
+.dropdown-menu { 
+    background-color: var(--alt-bg);
+}
+
+.dropdown-item:hover {
+    background: var(--main-bg);
+    color: var(--font-color);
+}
 
 /*==================== FOOTER CSS CLASS ====================*/
 
@@ -120,9 +136,12 @@ btn:hover {
 
 footer {
     background: var(--alt-bg);
+    width: 100%;
+    height: fit-content;
 }
 
 .border-color {
     border-top: 1px solid var(--border-color);
+
 }
   
