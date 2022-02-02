@@ -41,6 +41,11 @@ h1, h2, h3, h4, h5, h6, label {
   font-variant-caps: none;
 }
 
+th, td {
+    color: var(--font-color);
+    border-color: var(--border-color);
+}
+
 
 
 /*==================== HEADER CSS CLASS ====================*/
