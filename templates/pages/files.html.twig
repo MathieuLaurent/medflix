@@ -3,7 +3,8 @@
 {% block body %}
 
     {% for medium in media %}
-        {{ medium.name }}
+        <a href = "{{medium.link}}">a remplacer par miniatures</a>
+        <p>{{ medium.name }}</p>
         </br>
     {% endfor %}
 
