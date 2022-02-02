@@ -28,7 +28,6 @@ class Category
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank(message:"Vous devez indiquer un titre")]
     #[Assert\Regex(pattern:"/^[a-zA-Z0-9 ]+$/", match:true, message:"Les caractères spéciaux sont interdits dans le titre")]
-     
     private $name;
 
     #[ORM\ManyToMany(targetEntity: Media::class, mappedBy: 'category')]

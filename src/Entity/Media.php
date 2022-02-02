@@ -2,10 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\MediaRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MediaRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MediaRepository::class)]
 class Media
@@ -16,9 +20,23 @@ class Media
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Length(
+        min: 2,
+        max: 20,
+        minMessage: 'Le nom doit avoir au moins {{ limit }} caractères',
+        maxMessage: 'Le nom doit avoir au plus {{ limit }} caractères',
+        )]
+    #[Assert\NotBlank(message:"Vous devez indiquer un titre")]
+    #[Assert\Regex(pattern:"/^[a-zA-Z0-9 ]+$/", match:true, message:"Les caractères spéciaux sont interdits dans le titre")]
     private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\File(
+             maxSize : "5M",
+             mimeTypes : ["image/jpeg", "image/jpg", "image/gif", "image/png", "application/pdf", "video/x-msvideo", "video/webm", "video/mpeg"],
+             maxSizeMessage : "Le maximum autorisé est de 5MB.",
+             mimeTypesMessage : "Seuls les fichiers de type image, application ou vidéo sont autorisés."
+         )]
     private $link;
 
     #[ORM\Column(type: 'datetime_immutable')]
