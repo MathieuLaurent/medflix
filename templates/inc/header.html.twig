@@ -34,7 +34,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{app.user.email}}</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#">Profil</a></li>
-                        {% if is_granted('ROLE_ADMIN') %}
+                        {% if is_granted('ROLE_WRITTER') %}
                             <li class="nav-item"><a class="dropdown-item" href="{{path('editor')}}">Administration</a></li>     
                         {% endif %}
                         <li><hr class="dropdown-divider" /></li>
@@ -45,4 +45,7 @@
                 
             {% endif %}
         </ul>
+
+        {{render(controller('App\\Controller\\SearchNavController::renderSearchNav'))}}
+
     </nav>
