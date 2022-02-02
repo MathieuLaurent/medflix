@@ -16,17 +16,4 @@ class AccueilController extends AbstractController
         ]);
     }
 
-// /!\ PAS FINI
-    #[Route("/pdf", name:"file_pdf")]
-    public function pdfFiles() : Response
-    {
-
-
-
-        return $this->render("pages/pdfFiles.html.twig", [
-
-        ]);
-
-    }
-
 }
