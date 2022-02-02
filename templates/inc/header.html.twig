@@ -1,5 +1,7 @@
- <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">MEDFLIX</a>
+ <nav class="navbar navbar-expand-sm">
+      <a class="navbar-brand" href="#">
+        <img src="img/logo.png" alt="" class="logo">
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,8 +29,8 @@
       </div>
        <ul class="navbar-nav">
             {% if not app.user %}
-                <li class="nav-item"><a class="nav-link" href="{{path('app_register')}}">Inscription</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{path('app_login')}}">Connexion</a></li>
+                <li class="nav-item"><a class="nav-link nav-user" href="{{path('app_register')}}">Inscription</a></li>
+                <li class="nav-item"><a class="nav-link nav-user" href="{{path('app_login')}}">Connexion</a></li>
             {% else %}
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{app.user.email}}</a>
@@ -46,3 +48,6 @@
             {% endif %}
         </ul>
     </nav>
+
+    <header class="py-5 header">
+    </header>
