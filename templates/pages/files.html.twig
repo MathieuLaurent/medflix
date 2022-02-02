@@ -2,6 +2,9 @@
 
 {% block body %}
 
-
+    {% for medium in media %}
+        {{ medium.name }}
+        </br>
+    {% endfor %}
 
 {% endblock %}
