@@ -42,6 +42,7 @@ h1, h2, h3, h4, h5, h6, label {
 }
 
 
+
 /*==================== HEADER CSS CLASS ====================*/
 
 header { 
@@ -54,16 +55,8 @@ header {
     background: linear-gradient(180deg, rgba(58, 58, 58, 0.2), rgba(29, 29, 29, 0.2)), url('/img/header.jpg') center center / cover no-repeat;
 }
 
-.link-header { 
-    position:relative;
-    opacity: 0.95;
-    font-variant-caps: all-petite-caps;
-    letter-spacing: 0.15rem;
-    
-}
-
 .logo { 
-    width: 15vh;
+    width: 18vh;
     height: auto;
 }
 
@@ -75,17 +68,47 @@ header {
 .nav-link { 
     color: var(--green);
     font-variant-caps: all-petite-caps;
-    transition: color 600ms ease-in-out;
+    letter-spacing: 0.05rem;
+    opacity: 0.8;
+    transition: 600ms;
 
 }
 
 .nav-link:hover { 
     color: var(--red);
+    opacity: 1;
 }
 
 .nav-user {
     color: var(--orange);
 }
+
+.btn { 
+    background: var(--green);
+    color: var(--font-color);
+    opacity: 0.8;
+    transition: 500ms;
+
+}
+
+btn:hover { 
+    opacity: 1;
+}
+
+.search { 
+    background-color: var(--main-bg);
+    color: var(--font-color);
+}
+
+
+.form-control { 
+    border: var(--border-color);
+}
+
+.form-control:active { 
+    background-color: var(--main-bg);
+}
+
   
 
 /*==================== FOOTER CSS CLASS ====================*/
