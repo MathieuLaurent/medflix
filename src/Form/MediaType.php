@@ -5,7 +5,9 @@ namespace App\Form;
 use App\Entity\Media;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Entity\Category;
 
 class MediaType extends AbstractType
 {
@@ -14,9 +16,12 @@ class MediaType extends AbstractType
         $builder
             ->add('name')
             ->add('link')
-            ->add('createdAt')
-            ->add('userAuthor')
-            ->add('category')
+            ->add('category', EntityType::class,[
+                'class' => Category::class,
+                'expanded' => true,
+                'choice_label' => 'name',
+                'multiple' => true
+            ])
         ;
     }
 
