@@ -25,14 +25,18 @@ class EditorMediaController extends AbstractController
     }
 
     #[Route('/new', name: 'edit_media_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, UserInterface $user): Response
     {
+
 
         $medium = new Media();
         $form = $this->createForm(MediaType::class, $medium);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $medium->setUserAuthor($user->getFirstname());
+            $medium->setCreatedAt(new \DateTimeImmutable('now'));
 
             $entityManager->persist($medium);
             $entityManager->flush();
