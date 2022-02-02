@@ -16,6 +16,12 @@ class MediaType extends AbstractType
         $builder
             ->add('name')
             ->add('link')
+            ->add('category', EntityType::class,[
+                'class' => Category::class,
+                'expanded' => true,
+                'choice_label' => 'name',
+                'multiple' => true
+            ])
         ;
     }
 
