@@ -75,13 +75,6 @@ class EditorCategoryController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
 
             
-            $categoryEnfant = $categoryRepository->findBy(['category' => $id]);
-
-
-            foreach($categoryEnfant as $cat){
-                $cat->setCategory(null);
-            }
-
             $entityManager->remove($category);
             $entityManager->flush();
         }

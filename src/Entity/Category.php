@@ -30,8 +30,13 @@ class Category
     #[Assert\Regex(pattern:"/^[a-zA-Z0-9 ]+$/", match:true, message:"Les caractères spéciaux sont interdits dans le titre")]
     private $name;
 
-    #[ORM\OneToOne(inversedBy: 'category', targetEntity: self::class, cascade: ['persist', 'remove'])]
-    private $category;
+    #[ORM\OneToMany(targetEntity:'Category', mappedBy:'parent')]
+    private $children;
+
+    #[ORM\ManyToOne(targetEntity:'Category', inversedBy:'children')]
+    #[ORM\JoinColumn(name:"parent_id", referencedColumnName:"id")]
+    private $parent;
+
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Media::class,  orphanRemoval: true)]
     private $media;
@@ -39,6 +44,7 @@ class Category
     public function __construct()
     {
         $this->media = new ArrayCollection();
+        $this->children = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,17 +64,6 @@ class Category
         return $this;
     }
 
-    public function getCategory(): ?self
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?self $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Media[]
@@ -96,6 +91,55 @@ class Category
                 $medium->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getChildren(): Collection
+    {
+        return $this->children;
+    }
+    
+
+    public function addChildren(Category $childrens): self
+    {
+        if (!$this->children->contains($childrens)) {
+          //  $this->children[] = $childrens;
+            $this->children->add($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChildren(Category $category): self
+    {
+        if ($this->children->contains($category)) {
+          $this->children->removeElement($category);
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * Get the value of parent
+     */ 
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Set the value of parent
+     *
+     * @return  self
+     */ 
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
 
         return $this;
     }
