@@ -30,11 +30,11 @@ class Category
     #[Assert\Regex(pattern:"/^[a-zA-Z0-9 ]+$/", match:true, message:"Les caractères spéciaux sont interdits dans le titre")]
     private $name;
 
-    #[ORM\ManyToMany(targetEntity: Media::class, mappedBy: 'category')]
-    private $media;
-
     #[ORM\OneToOne(inversedBy: 'category', targetEntity: self::class, cascade: ['persist', 'remove'])]
     private $category;
+
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Media::class,  orphanRemoval: true)]
+    private $media;
 
     public function __construct()
     {
@@ -58,6 +58,18 @@ class Category
         return $this;
     }
 
+    public function getCategory(): ?self
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?self $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Media[]
      */
@@ -70,7 +82,7 @@ class Category
     {
         if (!$this->media->contains($medium)) {
             $this->media[] = $medium;
-            $medium->addCategory($this);
+            $medium->setCategory($this);
         }
 
         return $this;
@@ -79,20 +91,11 @@ class Category
     public function removeMedium(Media $medium): self
     {
         if ($this->media->removeElement($medium)) {
-            $medium->removeCategory($this);
+            // set the owning side to null (unless already changed)
+            if ($medium->getCategory() === $this) {
+                $medium->setCategory(null);
+            }
         }
-
-        return $this;
-    }
-
-    public function getCategory(): ?self
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?self $category): self
-    {
-        $this->category = $category;
 
         return $this;
     }
