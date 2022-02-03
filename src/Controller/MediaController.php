@@ -14,9 +14,6 @@ class MediaController extends AbstractController
     public function files(MediaRepository $media) : Response
     {    
 
-        // Form preremplit 
-
-
         return $this->render('pages/files.html.twig', [
             'media' =>$media->findBy([], array('name' => 'ASC'), 20, 0),
         ]);
