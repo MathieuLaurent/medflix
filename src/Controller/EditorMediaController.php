@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Media;
+use App\FileResize;
 use App\Form\MediaType;
+use Imagine\Gd\Imagine;
+use App\Service\ImageResize;
 use Gedmo\Sluggable\Util\Urlizer;
 use App\Repository\UserRepository;
 use App\Repository\MediaRepository;
@@ -17,6 +20,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/editor/media')]
 class EditorMediaController extends AbstractController
 {
+    private $resizer;
+
+    public function __construct()
+    {
+        $this->resizer = new FileResize();
+    }
+
     #[Route('/', name: 'edit_media_index', methods: ['GET'])]
     public function index(MediaRepository $mediaRepository): Response
     {
@@ -50,6 +60,10 @@ class EditorMediaController extends AbstractController
                 $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
                 $uploadedFile->move($destination, $newFilename);
                 $medium->setLink($newFilename);
+
+                $this->resizer->resize($destination.'/'.$newFilename);
+                $this->resizer->resizeInter($destination.'/'.$newFilename);
+
             }
             elseif($uploadedFile && ($uploadedFile->guessExtension() == "pdf")){
                 $destination = $this->getParameter('kernel.project_dir').'/public/pdf';

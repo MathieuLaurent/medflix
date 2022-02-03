@@ -4,7 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "9d02c29ddb76f52c82e4aa6a28e64eb1",
+=======
+<<<<<<< HEAD
+    "content-hash": "39958141cc9b9573be7b5ff14b5596c1",
+=======
+    "content-hash": "9d02c29ddb76f52c82e4aa6a28e64eb1",
+>>>>>>> 69a9be4137316ecaa5f6ee3256003d97716763c8
+>>>>>>> dfc1b266d7a172a0355257a1187ebd0a770ed9f9
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1563,6 +1571,8 @@
             "time": "2021-05-22T16:11:15+00:00"
         },
         {
+<<<<<<< HEAD
+=======
             "name": "gedmo/doctrine-extensions",
             "version": "v3.5.0",
             "source": {
@@ -1671,6 +1681,10 @@
             "time": "2022-01-10T21:29:33+00:00"
         },
         {
+<<<<<<< HEAD
+=======
+>>>>>>> 69a9be4137316ecaa5f6ee3256003d97716763c8
+>>>>>>> dfc1b266d7a172a0355257a1187ebd0a770ed9f9
             "name": "imagine/imagine",
             "version": "1.2.4",
             "source": {

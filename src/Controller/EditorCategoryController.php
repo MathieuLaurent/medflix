@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
-use Doctrine\Migrations\Finder\Finder;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -76,13 +75,6 @@ class EditorCategoryController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
 
             
-            $categoryEnfant = $categoryRepository->findBy(['category' => $id]);
-
-
-            foreach($categoryEnfant as $cat){
-                $cat->setCategory(null);
-            }
-
             $entityManager->remove($category);
             $entityManager->flush();
         }

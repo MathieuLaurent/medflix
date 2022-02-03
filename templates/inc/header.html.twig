@@ -29,7 +29,7 @@
                     <li class="nav-item dropdown">
                     <a class="nav-link px-4 fs-5 link-light fw-bold dropdown-toggle nav-id" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{app.user.firstname}} {{app.user.name}}</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Profil</a></li>
+                        <li><a class="dropdown-item" href="{{path('user_profile', {id:app.user.id})}}">Profil</a></li>
                         {% if is_granted('ROLE_WRITTER') %}
                             <li class="nav-item"><a class="dropdown-item" href="{{path('editor')}}">Administration</a></li>     
                         {% endif %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+    {% for image in img %}
+    <img src="{{ asset('imgMiniature/'~ image.name) }}" />
+    {% endfor %}
+
+{% endblock %}
