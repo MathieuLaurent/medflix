@@ -60,6 +60,7 @@ class EditorMediaController extends AbstractController
                 $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
                 $uploadedFile->move($destination, $newFilename);
                 $medium->setLink($newFilename);
+                $medium->setExtension($uploadedFile->guessExtension());
 
                 $this->resizer->resize($destination.'/'.$newFilename);
                 $this->resizer->resizeInter($destination.'/'.$newFilename);
@@ -72,14 +73,16 @@ class EditorMediaController extends AbstractController
                 $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
                 $uploadedFile->move($destination, $newFilename);
                 $medium->setLink($newFilename);
+                $medium->setExtension($uploadedFile->guessExtension());
             }
-            elseif($uploadedFile && ($uploadedFile->guessExtension() == "x-msvideo" || $uploadedFile->guessExtension() == "webm" || $uploadedFile->guessExtension() == "mpeg")){
+            elseif($uploadedFile && ($uploadedFile->guessExtension() == "avi" || $uploadedFile->guessExtension() == "webm" || $uploadedFile->guessExtension() == "mp4")){
                 $destination = $this->getParameter('kernel.project_dir').'/public/video';
                 
                 $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
                 $uploadedFile->move($destination, $newFilename);
                 $medium->setLink($newFilename);
+                $medium->setExtension($uploadedFile->guessExtension());
             }
 
             $entityManager->persist($medium);

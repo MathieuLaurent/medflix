@@ -50,6 +50,9 @@ class Media
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
+    #[ORM\Column(type: 'string', length: 10)]
+    private $extension;
+
 
     public function __construct()
     {
@@ -118,6 +121,18 @@ class Media
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getExtension(): ?string
+    {
+        return $this->extension;
+    }
+
+    public function setExtension(string $extension): self
+    {
+        $this->extension = $extension;
 
         return $this;
     }
