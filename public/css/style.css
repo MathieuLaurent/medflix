@@ -41,6 +41,11 @@ h1, h2, h3, h4, h5, h6, label {
   font-variant-caps: none;
 }
 
+th, td {
+    color: var(--font-color);
+    border-color: var(--border-color);
+}
+
 
 
 /*==================== HEADER CSS CLASS ====================*/
@@ -82,6 +87,10 @@ header {
     color: var(--orange);
 }
 
+.nav-id {
+    color: var(--font-color);
+}
+
 .btn { 
     background: var(--green);
     color: var(--font-color);
@@ -103,6 +112,8 @@ header {
 
 .form-control { 
     border: var(--border-color);
+    width: 85vh;
+    height: 2rem;
     transition: .15s;
 }
 
@@ -124,6 +135,21 @@ header {
 .dropdown-item:hover {
     background: var(--main-bg);
     color: var(--font-color);
+}
+
+.container-custom { 
+    width: 50%;
+    height: auto;
+}
+
+
+/*==================== MAIN CSS CLASS ====================*/
+
+.titre:before {
+    content: '';
+    width: 50vh;
+    height: 2px;
+    background: var(--red);
 }
 
 /*==================== FOOTER CSS CLASS ====================*/

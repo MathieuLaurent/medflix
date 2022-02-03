@@ -3,9 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Media;
+use App\FileResize;
 use App\Form\MediaType;
-use App\Repository\MediaRepository;
+use Imagine\Gd\Imagine;
+use App\Service\ImageResize;
+use Gedmo\Sluggable\Util\Urlizer;
 use App\Repository\UserRepository;
+use App\Repository\MediaRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +20,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/editor/media')]
 class EditorMediaController extends AbstractController
 {
+    private $resizer;
+
+    public function __construct()
+    {
+        $this->resizer = new FileResize();
+    }
+
     #[Route('/', name: 'edit_media_index', methods: ['GET'])]
     public function index(MediaRepository $mediaRepository): Response
     {
@@ -35,8 +46,41 @@ class EditorMediaController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $medium->setUserAuthor($user->getFirstname());
+
+            $medium->setUserAuthor($user);
+
             $medium->setCreatedAt(new \DateTimeImmutable('now'));
+
+            $uploadedFile = $form['link']->getData();
+            
+            if($uploadedFile && ($uploadedFile->guessExtension() == "jpg" || $uploadedFile->guessExtension() == "png" || $uploadedFile->guessExtension() == "jpeg" || $uploadedFile->guessExtension() == "gif")){
+                $destination = $this->getParameter('kernel.project_dir').'/public/img';
+                
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move($destination, $newFilename);
+                $medium->setLink($newFilename);
+
+                $this->resizer->resize($destination.'/'.$newFilename);
+                $this->resizer->resizeInter($destination.'/'.$newFilename);
+
+            }
+            elseif($uploadedFile && ($uploadedFile->guessExtension() == "pdf")){
+                $destination = $this->getParameter('kernel.project_dir').'/public/pdf';
+                
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move($destination, $newFilename);
+                $medium->setLink($newFilename);
+            }
+            elseif($uploadedFile && ($uploadedFile->guessExtension() == "x-msvideo" || $uploadedFile->guessExtension() == "webm" || $uploadedFile->guessExtension() == "mpeg")){
+                $destination = $this->getParameter('kernel.project_dir').'/public/video';
+                
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move($destination, $newFilename);
+                $medium->setLink($newFilename);
+            }
 
             $entityManager->persist($medium);
             $entityManager->flush();
