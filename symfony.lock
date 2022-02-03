@@ -88,12 +88,9 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
-<<<<<<< HEAD
-=======
     "gedmo/doctrine-extensions": {
         "version": "v3.5.0"
     },
->>>>>>> 69a9be4137316ecaa5f6ee3256003d97716763c8
     "imagine/imagine": {
         "version": "1.2.4"
     },
