@@ -143,11 +143,13 @@ header {
 }
 
 
-/*==================== FOOTER CSS CLASS ====================*/
+/*==================== MAIN CSS CLASS ====================*/
 
-.photo {
+.titre:before {
+    content: '';
     width: 50vh;
-    height: auto;
+    height: 2px;
+    background: var(--red);
 }
 
 /*==================== FOOTER CSS CLASS ====================*/
