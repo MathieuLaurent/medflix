@@ -1,43 +1,76 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Medflix{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        {# public/css/style.css #}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+        {# public/js/script.js #}
+    </head>
+    <body class="body">
+
+        {% include 'inc/header.html.twig' %}
 
 {% block body %}
-<div class="container">
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+
+<header class="d-flex justify-content-center align-items-center header">
+    <section class="w-50 p-3">
+      <p class="lead m-auto fw-bolder display-4 text-end slogan">Les plus belles photos de voyages pour une évasion assurée.</p>
     
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-            </div>
-        {% endif %}
-    
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail">Email</label>
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-        <label for="inputPassword">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-    
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
-    
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
-    
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" name="_remember_me"> Remember me
-                </label>
-            </div>
-        #}
-    
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
-    </form>
-    
-</div>
+    </section>
+
+    <section class="w-50 p-3">
+        <div class="container py-3">
+              <div class="card card-login m-5">
+                <form class="card-body p-5 m-3">
+      
+                    <div class="md-5 mt-md-4 pb-3">
+        
+                        <h2 class="fw-bold mb-2 title">Se connecter</h2>
+                        <p class="mb-5">Merci de saisir votre e-mail et votre mot de passe.</p>
+
+                    </div>
+      
+                    <div class="form-floating mb-3"> 
+                         
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail"  class="form-control search" autocomplete="email" required autofocus>
+                        <label for="inputEmail">E-mail</label>
+                    
+                    </div>
+      
+                    <div class="form-floating mb-3">
+
+                        <input type="password" name="password" id="inputPassword" class="form-control search" autocomplete="current-password" required>
+                        <label class="form-label" for="inputPassword">Password</label>
+                        
+                    </div>
+
+                    <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}">
+
+                    <button class="btn px-5" type="submit">Connexion</button>
+
+                     </div>
+
+                    </form>
+                </div>
+              </div>
+
+      </section>
+
+</header>
+
 {% endblock %}
+
+</body>
+
+
+{# script js #}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+</html>
+

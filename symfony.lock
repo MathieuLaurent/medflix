@@ -91,6 +91,9 @@
     "gedmo/doctrine-extensions": {
         "version": "v3.5.0"
     },
+    "imagine/imagine": {
+        "version": "1.2.4"
+    },
     "laminas/laminas-code": {
         "version": "4.5.1"
     },

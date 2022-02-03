@@ -8,22 +8,8 @@
 
       <div class="collapse navbar-collapse d-flex justify-content-end align-items-center" id="navbarsExample03">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link px-4 fs-5 dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explorer</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown03">
-              <a class="dropdown-item" href="#">pdf</a>
-              <hr>
-              <a class="dropdown-item" href="#">Images</a>
-            </div>
-          </li>
 
-          <li class="nav-item">
-            <a class="nav-link px-4 fs-5" href="#">Media</a>
-          </li>
 
-          <li class="nav-item">
-            <a class="nav-link px-4 fs-5" href="#">Categories</a>
-          </li>
          
         </ul>
       </div>
@@ -35,6 +21,11 @@
                   </boutton>
                 </a></li>
             {% else %}
+
+                    <li class="nav-item">
+                      <a class="nav-link px-4 fs-5" href="#">Categories</a>
+                    </li>
+                    
                     <li class="nav-item dropdown">
                     <a class="nav-link px-4 fs-5 link-light fw-bold dropdown-toggle nav-id" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{app.user.firstname}} {{app.user.name}}</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -52,13 +43,7 @@
         </ul>
     </nav>
 
-    <header class="py-5 header d-flex justify-content-center align-items-center">
-      <div class="container-custom">
-        <p class="lead m-auto fw-normal mb-3 display-4">Les plus belles photos de voyages pour une évasion assurée.</p>
-      
-      </div>
-    </header>
 
         
 
-    </nav>
+
