@@ -25,7 +25,7 @@
     <section class="w-50 p-3">
         <div class="container py-3">
               <div class="card card-login m-5">
-                <form class="card-body p-5 m-3">
+                <form class="card-body p-5 m-3" method="post">
       
                     <div class="md-5 mt-md-4 pb-3">
         
@@ -44,12 +44,14 @@
                     <div class="form-floating mb-3">
 
                         <input type="password" name="password" id="inputPassword" class="form-control search" autocomplete="current-password" required>
-                        <label class="form-label" for="inputPassword">Password</label>
-                        
+                        <label class="form-label" for="inputPassword">Mot de passe</label>
+
+                         <input type="hidden" name="_csrf_token"
+                                value="{{ csrf_token('authenticate') }}">
+
                     </div>
 
-                    <input type="hidden" name="_csrf_token"
-                    value="{{ csrf_token('authenticate') }}">
+                   
 
                     <button class="btn px-5" type="submit">Connexion</button>
 
