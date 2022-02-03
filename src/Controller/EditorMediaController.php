@@ -61,10 +61,8 @@ class EditorMediaController extends AbstractController
                 $uploadedFile->move($destination, $newFilename);
                 $medium->setLink($newFilename);
 
-                $this->resizer->resize('medflix/public/img/'.$newFilename);
-
-                
-
+                $this->resizer->resize($destination.'/'.$newFilename);
+                $this->resizer->resizeInter($destination.'/'.$newFilename);
 
             }
             elseif($uploadedFile && ($uploadedFile->guessExtension() == "pdf")){
