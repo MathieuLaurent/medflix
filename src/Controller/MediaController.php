@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\MediaRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Response;

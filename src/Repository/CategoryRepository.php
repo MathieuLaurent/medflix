@@ -23,10 +23,16 @@ class CategoryRepository extends ServiceEntityRepository
      * @return Category[] Returns an array of Category objects
       */
     
-    public function findByParentField()
+    public function findByParentField($value)
     {
+        if($value == NULL){
+            $value = "IS NULL";
+        }
+        else{
+            $value = '='.$value;
+        }
         return $this->createQueryBuilder('c')
-            ->andWhere('c.parent IS NULL')
+            ->andWhere('c.parent '.$value)
             ->orderBy('c.name', 'ASC')
             ->getQuery()
             ->getResult()

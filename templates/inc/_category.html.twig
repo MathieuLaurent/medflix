@@ -1,14 +1,24 @@
+<ul>
 {% for cat in categorys %}
     <li>
+    <button class="btn-toggle align-items-center collapsed side-btn nav-link fs-4" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="true">
         <a href="{{ path('list_explo', {id:cat.id}) }}">{{ cat.name }}</a>
-
-    {% for catItem in cat.children %}
+    </button>
          {% if cat.children is not null %}
-            <ul>
-                {% include "inc/_category.html.twig" with {'categorys': catItem.id} %}
-            </ul>
+            {% for catItem in cat.children %}
+
+            <div class="collapse show" id="{{cat.name}}-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                        <a href="#" class="link fs-6 collapsed" data-bs-toggle="collapse" data-bs-target="#{{catItem.name}}-collapse" aria-expanded="true">{{ render(controller( 'App\\Controller\\ListExploController::renderCategory', {catId: cat.id} )) }}</a>
+                        
+                    </li>
+                </ul>
+            </div>
+            {% endfor %}
         {% endif %}
-    {% endfor %}
+     
        
     </li>
 {% endfor %}
+</ul>
