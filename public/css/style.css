@@ -228,7 +228,7 @@ input:-webkit-autofill{
     display:block;
     text-decoration: none; 
     color: var(--font-color);
-    padding: 0.4rem;
+    padding: 0 1.2rem;
     transition: 500ms; 
 }
 
@@ -242,25 +242,38 @@ input:-webkit-autofill{
     margin-left: 2em;
 }
 
-.crossRotate {
-    -webkit-transition-duration: 1s;
-    -moz-transition-duration: 1s;
-    -o-transition-duration: 1s;
-    transition-duration: 1s;
-    -webkit-transition-property: -webkit-transform;
-    -moz-transition-property: -moz-transform;
-    -o-transition-property: -o-transform;
-    transition-property: transform;
-    outline: 0;
+.btn-toggle { 
+    position: relative;
 }
-  
-.crossRotate.active {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
+
+.btn-toggle:before { 
+    content: '〉'; 
+    position: absolute; 
+    left: 0;
+    transition: 0.70s;
+    -webkit-transition: 0.70s;
+    -moz-transition: 0.70s;
+    -ms-transition: 0.70s;
+    -o-transition: 0.70s;
+
 }
+
+
+.btn-toggle:hover:before {
+    cursor: pointer;
+    transition: 0.70s;
+  -webkit-transition: 0.70s;
+  -moz-transition: 0.70s;
+  -ms-transition: 0.70s;
+  -o-transition: 0.70s;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  margin-top: 0.3rem;
+}
+
 
 
 /*==================== FOOTER CSS CLASS ====================*/
