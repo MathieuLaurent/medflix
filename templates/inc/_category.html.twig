@@ -1,0 +1,14 @@
+{% for cat in categorys %}
+    <li>
+        <a href="{{ path('list_explo', {id:cat.id}) }}">{{ cat.name }}</a>
+
+    {% for catItem in cat.children %}
+         {% if cat.children is not null %}
+            <ul>
+                {% include "inc/_category.html.twig" with {'categorys': catItem.id} %}
+            </ul>
+        {% endif %}
+    {% endfor %}
+       
+    </li>
+{% endfor %}
