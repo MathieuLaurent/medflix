@@ -32,9 +32,9 @@ class Media
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\File(
-             maxSize : "5M",
+             maxSize : "50M",
              mimeTypes : ["image/jpeg", "image/jpg", "image/gif", "image/png", "application/pdf", "video/x-msvideo", "video/webm", "video/mpeg"],
-             maxSizeMessage : "Le maximum autorisé est de 5MB.",
+             maxSizeMessage : "Le maximum autorisé est de 50MB.",
              mimeTypesMessage : "Seuls les fichiers de type image, application ou vidéo sont autorisés."
          )]
     private $link;

@@ -3,9 +3,38 @@
 
 
 {% block body %}
+    <h1>Liste des images</h1>
 
     {% for image in img %}
         <img src="{{ asset('/imgMiniature/'~ image.link) }}" />
+    {% endfor %}
+
+    <h1>Liste des pdf</h1>
+
+    <table class="table table-striped table-hover ">
+    
+        <thead>
+            <th>nom</th>
+            <th>lien</th>
+        </thead>
+        <tbody>
+            {% for itemPdf in pdf %}
+                <tr>
+                    <td style="color:white">{{itemPdf.name}}</td>
+                    <td><a href="#">{{itemPdf.link}}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    
+    </table>
+
+    <h1> Liste des vidéos </h1>
+    {% for itemVid in video %}
+        <video controls width="250">
+
+            <source src="{{asset('/video/'~ itemVid.link)}}">
+
+        </video>
     {% endfor %}
 
 {% endblock %}

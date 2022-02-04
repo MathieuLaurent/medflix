@@ -16,6 +16,7 @@ class ListExploController extends AbstractController
     public function listExlo(int $id, MediaRepository $mediaRepository): Response
     {
         $list = $mediaRepository->findByCategoryField($id);
+        
 
         foreach($list as $item){
             if($item->getExtension() == "jpg" || $item->getExtension() == "png" || $item->getExtension() == "jpeg" || $item->getExtension() == "gif"){
@@ -28,6 +29,15 @@ class ListExploController extends AbstractController
                 $video[] = $item;
             }
          
+        }
+        if(empty($img)){
+            $img = null;
+        }
+        if(empty($pdf)){
+            $pdf = null;
+        }
+        if(empty($video)){
+            $video = null;
         }
 
 

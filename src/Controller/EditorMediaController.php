@@ -55,12 +55,12 @@ class EditorMediaController extends AbstractController
             
             if($uploadedFile && ($uploadedFile->guessExtension() == "jpg" || $uploadedFile->guessExtension() == "png" || $uploadedFile->guessExtension() == "jpeg" || $uploadedFile->guessExtension() == "gif")){
                 $destination = $this->getParameter('kernel.project_dir').'/public/img';
+                $medium->setExtension($uploadedFile->guessExtension());
                 
                 $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
                 $uploadedFile->move($destination, $newFilename);
                 $medium->setLink($newFilename);
-                $medium->setExtension($uploadedFile->guessExtension());
 
                 $this->resizer->resize($destination.'/'.$newFilename);
                 $this->resizer->resizeInter($destination.'/'.$newFilename);
@@ -68,21 +68,22 @@ class EditorMediaController extends AbstractController
             }
             elseif($uploadedFile && ($uploadedFile->guessExtension() == "pdf")){
                 $destination = $this->getParameter('kernel.project_dir').'/public/pdf';
+
+                $medium->setExtension($uploadedFile->guessExtension());
                 
                 $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
                 $uploadedFile->move($destination, $newFilename);
                 $medium->setLink($newFilename);
-                $medium->setExtension($uploadedFile->guessExtension());
             }
             elseif($uploadedFile && ($uploadedFile->guessExtension() == "avi" || $uploadedFile->guessExtension() == "webm" || $uploadedFile->guessExtension() == "mp4")){
                 $destination = $this->getParameter('kernel.project_dir').'/public/video';
+                $medium->setExtension($uploadedFile->guessExtension());
                 
                 $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
                 $uploadedFile->move($destination, $newFilename);
                 $medium->setLink($newFilename);
-                $medium->setExtension($uploadedFile->guessExtension());
             }
 
             $entityManager->persist($medium);

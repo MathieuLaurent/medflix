@@ -6,11 +6,11 @@ use Imagine\Image\Box;
 
 class FileResize
 {
-    private const MAX_WIDTH = 150;
-    private const MAX_HEIGHT = 50;
+    private const MAX_WIDTH = 500;
+    private const MAX_HEIGHT = 350;
 
-    private const MAX_WIDTH_INTER = 300;
-    private const MAX_HEIGHT_INTER = 100;
+    private const MAX_WIDTH_INTER = 800;
+    private const MAX_HEIGHT_INTER = 600;
 
     private $imagine;
 
