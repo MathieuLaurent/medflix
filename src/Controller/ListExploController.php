@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Media;
+use App\Repository\CategoryRepository;
 use App\Repository\MediaRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ListExploController extends AbstractController
 {
     #[Route('/list/explo/{id}', name: 'list_explo')]
-    public function listExlo(int $id, MediaRepository $mediaRepository): Response
+    public function listExlo(int $id, MediaRepository $mediaRepository, CategoryRepository $category): Response
     {
         $list = $mediaRepository->findByCategoryField($id);
         
@@ -44,7 +45,8 @@ class ListExploController extends AbstractController
         return $this->render('pages/listExplo.html.twig', [
             'img' => $img,
             'pdf' => $pdf,
-            'video' => $video
+            'video' => $video,
+            'category' => $category->find($id)
         ]);
     }
 
