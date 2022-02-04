@@ -2,10 +2,65 @@
 
 {% block body %}
 
-    {% for medium in media %}
-        <a href = "{{medium.link}}">a remplacer par miniatures</a>
-        <p>{{ medium.name }}</p>
-        </br>
-    {% endfor %}
+
+    <div class="d-flex flex-row bd-highlight mb-3">
+
+        <div class="p-2 bd-highlight">
+            {% include 'inc/_sidebar.html.twig' %}
+        </div>
+
+        <div class="p-2 bd-highlight">
+
+            <div class="container container-custom">
+
+                <h2 class="title m-4">Explorer la galerie</h2>
+
+                <div class="filtres">
+                    {% include 'inc/_filtres.html.twig' %}
+                </div>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem harum explicabo suscipit, sint nostrum illo perspiciatis maxime optio officiis ex temporibus expedita eius adipisci eveniet nulla. Dolorem neque omnis odit.
+                Voluptate explicabo placeat quae dolorum obcaecati ipsam nemo voluptatum porro omnis magnam, officiis, deleniti fuga assumenda libero, consequuntur maxime in incidunt. Aperiam fuga unde necessitatibus libero eum, voluptatum odit deserunt!
+                Totam dolorem obcaecati eligendi vel voluptatem exercitationem omnis perferendis suscipit harum aliquid odit consectetur fuga, illo mollitia itaque praesentium. Commodi, animi! Commodi ab incidunt minus rerum non. Exercitationem, rerum necessitatibus!
+                Sequi sunt odio animi, ipsa id asperiores. Quis harum aliquam laudantium nihil, reiciendis repellendus. Corrupti corporis voluptatum ducimus amet fugit quibusdam! Vel mollitia ab quam eaque aspernatur enim tempore temporibus?
+                Provident accusamus enim ipsa aliquam? Officiis repellat earum vero quasi quaerat obcaecati atque velit labore totam omnis! Explicabo aliquam autem deleniti, ex beatae animi dicta minus consequatur quas cumque velit!
+                Dignissimos dicta aut laborum tenetur quisquam alias sequi minus magni praesentium quis velit quae maxime laudantium adipisci, cum assumenda vel. Eos ducimus laboriosam nesciunt? Rem recusandae necessitatibus eius aspernatur doloremque!
+                Pariatur aperiam ut accusantium quia doloribus voluptatibus non porro obcaecati ex quo quas natus, blanditiis commodi praesentium unde nulla! Velit delectus inventore eius ducimus ea. Ab, nam placeat! Temporibus, accusamus!
+                Rerum illo ab qui doloremque ipsum culpa asperiores inventore eveniet officia earum, commodi nobis iste sint at impedit. Maiores, quibusdam et! Cum voluptatum ut officiis blanditiis eius quo autem fugit.
+                Consequatur, laborum dolorem? Voluptate cum, mollitia repudiandae veritatis sunt ipsam facilis at libero? Ratione facere sed, expedita vero at animi? Voluptas reiciendis libero non reprehenderit incidunt nihil consequuntur vitae id.
+                Quidem, ipsam ad quasi illo modi, eligendi doloribus ea facere libero quas quaerat delectus, doloremque sequi unde. Non modi molestias id architecto perspiciatis, nesciunt, nobis, porro dicta eum maxime consequatur.</p>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem harum explicabo suscipit, sint nostrum illo perspiciatis maxime optio officiis ex temporibus expedita eius adipisci eveniet nulla. Dolorem neque omnis odit.
+                    Voluptate explicabo placeat quae dolorum obcaecati ipsam nemo voluptatum porro omnis magnam, officiis, deleniti fuga assumenda libero, consequuntur maxime in incidunt. Aperiam fuga unde necessitatibus libero eum, voluptatum odit deserunt!
+                    Totam dolorem obcaecati eligendi vel voluptatem exercitationem omnis perferendis suscipit harum aliquid odit consectetur fuga, illo mollitia itaque praesentium. Commodi, animi! Commodi ab incidunt minus rerum non. Exercitationem, rerum necessitatibus!
+                    Sequi sunt odio animi, ipsa id asperiores. Quis harum aliquam laudantium nihil, reiciendis repellendus. Corrupti corporis voluptatum ducimus amet fugit quibusdam! Vel mollitia ab quam eaque aspernatur enim tempore temporibus?
+                    Provident accusamus enim ipsa aliquam? Officiis repellat earum vero quasi quaerat obcaecati atque velit labore totam omnis! Explicabo aliquam autem deleniti, ex beatae animi dicta minus consequatur quas cumque velit!
+                    Dignissimos dicta aut laborum tenetur quisquam alias sequi minus magni praesentium quis velit quae maxime laudantium adipisci, cum assumenda vel. Eos ducimus laboriosam nesciunt? Rem recusandae necessitatibus eius aspernatur doloremque!
+                    Pariatur aperiam ut accusantium quia doloribus voluptatibus non porro obcaecati ex quo quas natus, blanditiis commodi praesentium unde nulla! Velit delectus inventore eius ducimus ea. Ab, nam placeat! Temporibus, accusamus!
+                    Rerum illo ab qui doloremque ipsum culpa asperiores inventore eveniet officia earum, commodi nobis iste sint at impedit. Maiores, quibusdam et! Cum voluptatum ut officiis blanditiis eius quo autem fugit.
+                    Consequatur, laborum dolorem? Voluptate cum, mollitia repudiandae veritatis sunt ipsam facilis at libero? Ratione facere sed, expedita vero at animi? Voluptas reiciendis libero non reprehenderit incidunt nihil consequuntur vitae id.
+                    Quidem, ipsam ad quasi illo modi, eligendi doloribus ea facere libero quas quaerat delectus, doloremque sequi unde. Non modi molestias id architecto perspiciatis, nesciunt, nobis, porro dicta eum maxime consequatur.</p>
+                    
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem harum explicabo suscipit, sint nostrum illo perspiciatis maxime optio officiis ex temporibus expedita eius adipisci eveniet nulla. Dolorem neque omnis odit.
+                        Voluptate explicabo placeat quae dolorum obcaecati ipsam nemo voluptatum porro omnis magnam, officiis, deleniti fuga assumenda libero, consequuntur maxime in incidunt. Aperiam fuga unde necessitatibus libero eum, voluptatum odit deserunt!
+                        Totam dolorem obcaecati eligendi vel voluptatem exercitationem omnis perferendis suscipit harum aliquid odit consectetur fuga, illo mollitia itaque praesentium. Commodi, animi! Commodi ab incidunt minus rerum non. Exercitationem, rerum necessitatibus!
+                        Sequi sunt odio animi, ipsa id asperiores. Quis harum aliquam laudantium nihil, reiciendis repellendus. Corrupti corporis voluptatum ducimus amet fugit quibusdam! Vel mollitia ab quam eaque aspernatur enim tempore temporibus?
+                        Provident accusamus enim ipsa aliquam? Officiis repellat earum vero quasi quaerat obcaecati atque velit labore totam omnis! Explicabo aliquam autem deleniti, ex beatae animi dicta minus consequatur quas cumque velit!
+                        Dignissimos dicta aut laborum tenetur quisquam alias sequi minus magni praesentium quis velit quae maxime laudantium adipisci, cum assumenda vel. Eos ducimus laboriosam nesciunt? Rem recusandae necessitatibus eius aspernatur doloremque!
+                        Pariatur aperiam ut accusantium quia doloribus voluptatibus non porro obcaecati ex quo quas natus, blanditiis commodi praesentium unde nulla! Velit delectus inventore eius ducimus ea. Ab, nam placeat! Temporibus, accusamus!
+                        Rerum illo ab qui doloremque ipsum culpa asperiores inventore eveniet officia earum, commodi nobis iste sint at impedit. Maiores, quibusdam et! Cum voluptatum ut officiis blanditiis eius quo autem fugit.
+                        Consequatur, laborum dolorem? Voluptate cum, mollitia repudiandae veritatis sunt ipsam facilis at libero? Ratione facere sed, expedita vero at animi? Voluptas reiciendis libero non reprehenderit incidunt nihil consequuntur vitae id.
+                        Quidem, ipsam ad quasi illo modi, eligendi doloribus ea facere libero quas quaerat delectus, doloremque sequi unde. Non modi molestias id architecto perspiciatis, nesciunt, nobis, porro dicta eum maxime consequatur.</p>
+                {% for medium in media %}
+                <a href = "{{medium.link}}">a remplacer par miniatures</a>
+                <p>{{ medium.name }}</p>
+                </br>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+
 
 {% endblock %}

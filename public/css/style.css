@@ -42,10 +42,31 @@ h1, h2, h3, h4, h5, h6, label {
   font-variant-caps: none;
 }
 
+.title { 
+    position: relative;
+}
+
+.title::before { 
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0.5em;
+    border-top: 2px solid var(--green);
+}
+
+.subtitle {
+    color: var(--red);
+}
+
 th, td {
     color: var(--font-color);
     border-color: var(--border-color);
 }
+
+
+
 
 /*==================== ACCUEIL CSS CLASS ====================*/
 
@@ -136,21 +157,8 @@ th, td {
     background: var(--alt-bg);
     width: 80vh;
     box-shadow: 8px 3px 15px -4px var(--alt-bg);
+    border-bottom: 1px solid var(--orange)
 
-}
-
-title { 
-    position: relative;
-}
-
-.title::before { 
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 0.5em;
-    border-top: 2px solid var(--green);
 }
 
 .search { 
@@ -183,6 +191,76 @@ input:-webkit-autofill{
 
 /*==================== SIDEBAR CSS CLASS ====================*/
 
+.sidebar { 
+    position: relative;
+    width: 280px;
+}
+
+
+.filtres { 
+    background: var(--alt-bg);
+}
+
+.side-btn { 
+    position: relative;
+    background: transparent;
+    border: none; 
+    color: var(--green);
+    transition: 500ms;
+}
+
+.side-btn:hover { 
+    color: var(--red);
+}
+
+.side-btn::after { 
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 250px;
+    height: 0.5em;
+    border-top: 2px solid var(--red);
+}
+
+.link { 
+    display:block;
+    text-decoration: none; 
+    color: var(--font-color);
+    padding: 0.4rem;
+    transition: 500ms; 
+}
+
+.link:hover {
+    background-color: var(--alt-bg);
+    border-right: 1px solid var(--orange);
+    color: var(--font-color);
+}
+
+.sub-link { 
+    margin-left: 2em;
+}
+
+.crossRotate {
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+    outline: 0;
+}
+  
+.crossRotate.active {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 
 
 /*==================== FOOTER CSS CLASS ====================*/
