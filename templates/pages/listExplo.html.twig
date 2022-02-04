@@ -5,7 +5,7 @@
 {% block body %}
 
     {% for image in img %}
-    <img src="{{ asset('imgMiniature/'~ image.name) }}" />
+        <img src="{{ asset('/imgMiniature/'~ image.link) }}" />
     {% endfor %}
 
 {% endblock %}
