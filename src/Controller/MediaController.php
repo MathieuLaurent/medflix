@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\MediaRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +13,7 @@ class MediaController extends AbstractController
 {
     
     #[Route("/files", name:"files")]
-    public function files(MediaRepository $media) : Response
+    public function files(MediaRepository $media, CategoryRepository $category) : Response
     {    
 
         return $this->render('pages/files.html.twig', [
