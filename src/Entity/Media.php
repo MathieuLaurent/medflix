@@ -46,12 +46,14 @@ class Media
     #[ORM\JoinColumn(nullable: false)]
     private $userAuthor;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'media')]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'media')]
+    #[ORM\JoinColumn(nullable: false)]
     private $category;
+
 
     public function __construct()
     {
-        $this->category = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -107,26 +109,15 @@ class Media
         return $this;
     }
 
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategory(): Collection
+    
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
 
-    public function addCategory(Category $category): self
+    public function setCategory(?Category $category): self
     {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        $this->category->removeElement($category);
+        $this->category = $category;
 
         return $this;
     }

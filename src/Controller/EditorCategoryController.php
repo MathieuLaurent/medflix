@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin/category')]
+#[Route('/editor/category')]
 class EditorCategoryController extends AbstractController
 {
     #[Route('/', name: 'editor_category_index', methods: ['GET'])]
@@ -75,13 +75,6 @@ class EditorCategoryController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
 
             
-            $categoryEnfant = $categoryRepository->findBy(['category' => $id]);
-
-
-            foreach($categoryEnfant as $cat){
-                $cat->setCategory(null);
-            }
-
             $entityManager->remove($category);
             $entityManager->flush();
         }

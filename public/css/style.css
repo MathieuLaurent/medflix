@@ -31,6 +31,7 @@ body {
     background: var(--main-bg);
     color: var(--font-color);
     font-family: 'Playfair Display', serif;
+    opacity: 0.9;
 }
 
 h1, h2, h3, h4, h5, h6, label { 
@@ -46,19 +47,26 @@ th, td {
     border-color: var(--border-color);
 }
 
+/*==================== ACCUEIL CSS CLASS ====================*/
+
+  .header { 
+    color: var(--font-color);
+  }
+  
+  .body { 
+      position: relative;
+      background: url('/img/header.jpg') no-repeat center center fixed; 
+      background-size: cover;
+  }
+
+  .slogan { 
+      width:70vh;
+  }
 
 
-/*==================== HEADER CSS CLASS ====================*/
 
-header { 
-  color: var(--font-color);
-}
+/*==================== NAV CSS CLASS ====================*/
 
-.header { 
-    width: auto;
-    height: 50vh;
-    background: linear-gradient(180deg, rgba(58, 58, 58, 0.2), rgba(29, 29, 29, 0.2)), url('/img/header.jpg') center center / cover no-repeat;
-}
 
 .logo { 
     width: 18vh;
@@ -104,22 +112,6 @@ header {
     color: var(--font-color);
 }
 
-.search { 
-    background-color: var(--main-bg);
-    color: var(--font-color);
-}
-
-
-.form-control { 
-    border: var(--border-color);
-    width: 85vh;
-    height: 2rem;
-    transition: .15s;
-}
-
-.form-control:focus { 
-    background-color: var(--main-bg);
-}
 
 .dropdown-item { 
     background-color: var(--alt-bg);
@@ -137,20 +129,61 @@ header {
     color: var(--font-color);
 }
 
-.container-custom { 
-    width: 50%;
-    height: auto;
+
+/*==================== FORM CSS CLASS ====================*/
+
+.card-login { 
+    background: var(--alt-bg);
+    width: 80vh;
+    box-shadow: 8px 3px 15px -4px var(--alt-bg);
+
+}
+
+title { 
+    position: relative;
+}
+
+.title::before { 
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0.5em;
+    border-top: 2px solid var(--green);
+}
+
+.search { 
+    background-color: var(--main-bg);
+    color: var(--font-color);
 }
 
 
-/*==================== MAIN CSS CLASS ====================*/
-
-.titre:before {
-    content: '';
-    width: 50vh;
-    height: 2px;
-    background: var(--red);
+.form-control { 
+    border: var(--border-color);
+    height: 2rem;
+    transition: .15s;
 }
+
+.form-control:focus { 
+    background-color: var(--main-bg);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px var(--main-bg) inset !important;
+    box-shadow: 0 0 0 30px var(--main-bg) inset !important;
+}
+
+input:-webkit-autofill{
+    -webkit-text-fill-color: var(--red) !important;
+}
+
+/*==================== SIDEBAR CSS CLASS ====================*/
+
+
 
 /*==================== FOOTER CSS CLASS ====================*/
 
@@ -169,4 +202,6 @@ footer {
     border-top: 1px solid var(--border-color);
 
 }
-  
+
+    
+

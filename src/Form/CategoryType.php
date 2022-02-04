@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Category;
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -15,12 +16,12 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('category', EntityType::class, [
+            ->add('parent', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
-                'empty_data' => null,
+                'expanded' => true,
                 'multiple' => false,
-                'required' => false,
+                'empty_data' => null
             ])
         ;
     }
