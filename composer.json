@@ -11,9 +11,9 @@
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.11",
+        "gedmo/doctrine-extensions": "^3.5",
 <<<<<<< HEAD
 =======
-        "gedmo/doctrine-extensions": "^3.5",
 <<<<<<< HEAD
 =======
 >>>>>>> 69a9be4137316ecaa5f6ee3256003d97716763c8

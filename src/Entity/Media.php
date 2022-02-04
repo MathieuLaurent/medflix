@@ -32,9 +32,9 @@ class Media
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\File(
-             maxSize : "5M",
+             maxSize : "50M",
              mimeTypes : ["image/jpeg", "image/jpg", "image/gif", "image/png", "application/pdf", "video/x-msvideo", "video/webm", "video/mpeg"],
-             maxSizeMessage : "Le maximum autorisé est de 5MB.",
+             maxSizeMessage : "Le maximum autorisé est de 50MB.",
              mimeTypesMessage : "Seuls les fichiers de type image, application ou vidéo sont autorisés."
          )]
     private $link;
@@ -49,6 +49,9 @@ class Media
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'media')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
+
+    #[ORM\Column(type: 'string', length: 10)]
+    private $extension;
 
 
     public function __construct()
@@ -118,6 +121,18 @@ class Media
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getExtension(): ?string
+    {
+        return $this->extension;
+    }
+
+    public function setExtension(string $extension): self
+    {
+        $this->extension = $extension;
 
         return $this;
     }
