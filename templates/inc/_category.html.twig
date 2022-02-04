@@ -2,7 +2,7 @@
 {% for cat in categorys %}
     <li>
     <button class="btn-toggle align-items-center collapsed side-btn nav-link fs-4" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="true">
-        <a href="{{ path('list_explo', {id:cat.id}) }}">-{{ cat.name }}</a>
+        <a href="{{ path('list_explo', {id:cat.id}) }}">{{ cat.name }}</a>
     </button>
          {% if cat.children is not null %}
             {% for catItem in cat.children %}
@@ -16,9 +16,6 @@
                 </ul>
             </div>
             {% endfor %}
-            {% else %}
-            
-                <a href="{{ path('list_explo', {id:catItem.id}) }}">{{catItem.name}}</a>
         {% endif %}
      
        
