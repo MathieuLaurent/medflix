@@ -118,15 +118,15 @@ class EditorMediaController extends AbstractController
             
             $edit = $mediaRepository->find($id);
             $lien = $edit-> getLink();
-            
+            if(!empty($lien)){
             unlink($this->getParameter('kernel.project_dir').'/public/img/'.$lien);
             unlink($this->getParameter('kernel.project_dir').'/public/imgMiniature/'.$lien);
             unlink($this->getParameter('kernel.project_dir').'/public/imgInter/'.$lien);
-             
-            $medium->setLink(''); //
+            
+            $medium->setLink(''); 
             $medium->setExtension('');
             $entityManager->flush();
-
+            }
             if($uploadedFile && ($uploadedFile->guessExtension() == "jpg" || $uploadedFile->guessExtension() == "png" || $uploadedFile->guessExtension() == "jpeg" || $uploadedFile->guessExtension() == "gif")){
                 $destination = $this->getParameter('kernel.project_dir').'/public/img';
                 $medium->setExtension($uploadedFile->guessExtension());
