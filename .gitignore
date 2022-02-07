@@ -16,9 +16,24 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c7b6a6f1224512325e4f4d9ba3c151f3e1c255d6
 
 /public/img/
 /public/imgInter/
 /public/imgMiniature/
 /public/pdf/
+<<<<<<< HEAD
 /public/video/
+=======
+/public/video/
+=======
+/public/img/
+/public/imgMiniature/
+/public/imgInter/
+/public/video/
+/public/pdf/
+>>>>>>> 99d8c46465ab8459bf275aa590cbcf8c644cc140
+>>>>>>> c7b6a6f1224512325e4f4d9ba3c151f3e1c255d6
