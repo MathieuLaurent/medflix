@@ -12,12 +12,6 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.11",
         "gedmo/doctrine-extensions": "^3.5",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 69a9be4137316ecaa5f6ee3256003d97716763c8
->>>>>>> dfc1b266d7a172a0355257a1187ebd0a770ed9f9
         "imagine/imagine": "^1.2",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.2",
