@@ -42,11 +42,20 @@ class ListExploController extends AbstractController
         }
 
 
+
         return $this->render('pages/listExplo.html.twig', [
             'img' => $img,
             'pdf' => $pdf,
             'video' => $video,
-            'category' => $category->find($id)
+            'category' => $category->find($id),
+            'categorys' => $category->findByParentField(NULL)
+        ]);
+    }
+
+    public function renderCategory(CategoryRepository $category, int $catId){
+
+        return $this->render('inc/_category.html.twig', [
+            'categorys' => $category->findByParentField($catId)
         ]);
     }
 

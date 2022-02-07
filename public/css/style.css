@@ -34,6 +34,10 @@ body {
     opacity: 0.9;
 }
 
+a{
+    text-decoration: none;
+    color:var(--font-color)
+}
 
 h1, h2, h3, h4, h5, h6, label { 
   font-variant-caps: all-petite-caps;
