@@ -24,11 +24,10 @@
             
         {% if img is not null %}
             <h5 class="mt-4">Les images</h5>
-                <section class="row row-cols-4 row-cols-md-6 row-cols-xl-6 justify-content-center">
+                <section class="container d-flex justify-content-between flex-wrap p-4">
                   {% for imgItem in img %}
-                  <div class="col mb-5">
-                        <div class="card card-custom">
-                            <img src="{{asset('/imgMiniature/' ~ imgItem.link)}}" class="card-img-top img-custom ">
+                        <div class="card card-custom mb-4">
+                            <img src="{{asset('/imgMiniature/' ~ imgItem.link)}}" class="card-img-top img-custom">
                             <div class="card-body">
                                 <h5 class="card-title">{{imgItem.name}}</h5>
                                 
