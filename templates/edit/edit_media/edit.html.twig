@@ -3,11 +3,11 @@
 {% block title %}Edit Media{% endblock %}
 
 {% block body %}
-    <h1>Edit Media</h1>
+    <h1>Editer les Media</h1>
 
     {{ include('edit/edit_media/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('edit_media_index') }}">back to list</a>
+    <a href="{{ path('edit_media_index') }}">Retour à la liste</a>
 
     {{ include('edit/edit_media/_delete_form.html.twig') }}
 {% endblock %}

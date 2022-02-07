@@ -26,7 +26,8 @@ class MediaType extends AbstractType
                 'class' => Category::class,
                 'expanded' => true,
                 'choice_label' => 'name',
-                'multiple' => false
+                'multiple' => false,
+                
             ])
             
         ;
