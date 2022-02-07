@@ -34,8 +34,14 @@ body {
     opacity: 0.9;
 }
 
+
 h1, h2, h3, h4, h5, h6, label { 
   font-variant-caps: all-petite-caps;
+}
+
+a { 
+    text-decoration: none;
+    color: var(--font-color);
 }
 
 .titre { 
@@ -149,6 +155,8 @@ th, td {
     background: var(--main-bg);
     color: var(--font-color);
 }
+
+
 
 
 /*==================== FORM CSS CLASS ====================*/
@@ -274,12 +282,102 @@ input:-webkit-autofill{
   margin-top: 0.3rem;
 }
 
+/*==================== CARD EXPLORER CSS CLASS ====================*/
+
+.card-custom { 
+    position: relative;
+    width: 20rem;
+    height: 12rem;
+    background: var(--alt-bg);
+    box-shadow: 3px 1px 20px 1px var(--alt-bg);
+    
+}
+
+.card-custom-pdf {
+    height: 5rem;
+}
+
+.card-custom-video {
+    height: 20rem;
+}
+
+.img-custom {
+    width: 20rem;
+    height: 7rem;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 500ms;
+}
+
+.video-custom { 
+    width: 20rem;
+}
+
+.img-custom:hover {
+    opacity:1;
+}
+
+.logo-card { 
+    color: var(--red);
+    padding: 0.2em;    
+    transition: 500ms;
+}
+
+.logo-card:hover { 
+    color: var(--green);
+}
+
+.option { 
+    position: absolute; 
+    right: 0; 
+    bottom: 0;
+}
+
+.option:before {
+    content:'';
+    width: 15em;
+    height: 1px;
+    border-radius: 2px;
+    background: var(--border-color);
+    position:absolute;
+    left: -15em;
+    bottom: 1em;
+
+}
+
+/*==================== CANVAS CARD EXPLO CSS CLASS ====================*/
+
+.canvas-custom { 
+    position: relative; 
+    background: var(--main-bg);
+    color: var(--font-color);
+    height: 20rem;
+}
+
+.canvas-custom:before {
+    content: '';
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 3.2rem;
+    background: var(--green);
+    z-index: -1;
+
+}
+
+.img-canvas-custom { 
+    width: 400px;
+    height: auto;
+}
+
+
+
 
 
 /*==================== FOOTER CSS CLASS ====================*/
 
 .copyright { 
-    color: var(--orange);
+    color: var(--green);
     font-variant-caps: all-petite-caps;
 }
 
