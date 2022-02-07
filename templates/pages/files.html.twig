@@ -21,13 +21,15 @@
 
                     
 <!------------------------------------------------------------------------------------------- CARD IMAGE -->
+            
+        {% if img is not null %}
             <h5 class="mt-4">Les images</h5>
                 <section class="container d-flex justify-content-between flex-wrap p-4">
-
+            {       {% for imgItem in img %}
                         <div class="card card-custom mb-4">
-                            <img src="/img/paris.jpg" class="card-img-top img-custom">
+                            <img src="{{asset('/imgMiniature/' ~ imgItem.link)}}" class="card-img-top img-custom">
                             <div class="card-body">
-                                <h5 class="card-title">titre du média</h5>
+                                <h5 class="card-title">{{imgItem.name}}</h5>
                                 
                                 <div class="option p-2">
                                     <a href="/" target="_blank">
@@ -46,25 +48,29 @@
 
                           <div class="offcanvas offcanvas-bottom canvas-custom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
                             <div class="offcanvas-header">
-                              <h5 class="offcanvas-title canvas-title-custom" id="offcanvasBottomLabel">Titre du média</h5>
+                              <h5 class="offcanvas-title canvas-title-custom" id="offcanvasBottomLabel">{{imgItem.name}}</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body small">
                               
-                                <img src="/img/paris.jpg" class="img-canvas-custom">
+                                <img src="{{asset('/imgInter/' ~ imgItem.link)}}" class="img-canvas-custom">
                                 
                             </div>
-                          </div>
+                          </div>  
+            {% endfor %}
                 </section>
-
+        {% endif %}
 <!------------------------------------------------------------------------------------------- CARD VIDEO -->
+
+            {% if video is not null %}
 
                 <h5 class="mt-4">Les videos</h5>
                     <section class="container d-flex justify-content-between flex-wrap p-4">
+                {% for videoItem in video %}
                         <div class="card card-custom card-custom-video mb-4">
-                            <video src="\video\hotel-mario-non-hd-61fceb23c99a7.mp4" class="card-img-top video-custom"></video>
+                            <video src="{{asset('/video/' ~ videoItem.link)}}" class="card-img-top video-custom"></video>
                             <div class="card-body">
-                                <h5 class="card-title">titre du média</h5>
+                                <h5 class="card-title">{{videoItem.name}}</h5>
                                 
                                 <div class="option p-2">
                                     <a href="/" target="_blank">
@@ -76,14 +82,18 @@
                                 </div>
                             </div>
                           </div>
+                    {% endfor %}
                     </section>
-
+                {% endif %}
  <!------------------------------------------------------------------------------------------- CARD PDF -->
+
+            {% if pdf is not null %}
                 <h5 class="mt-4">Les pdfs</h5>
                     <section class="container d-flex justify-content-between flex-wrap p-4">
+                {% for pdfItem in pdf %}
                         <div class="card card-custom card-custom-pdf mb-4">
                             <div class="card-body">
-                                <h5 class="card-title">titre du média</h5>
+                                <h5 class="card-title">{{pdfItem.name}}</h5>
                                 
                                 <div class="option p-2">
                                     <a href="/" target="_blank">
@@ -95,10 +105,14 @@
                                 </div>
                             </div>
                           </div>
+=======
+                {% endfor %}
                     </section>
+                    
+            {% endif %}
 
 
-                
+>>>>>>> f38eabb21ec95faa358167413c48fb5f399da2b6
             </div>
 
         </div>
