@@ -48,4 +48,14 @@ class MediaRepository extends ServiceEntityRepository
     }
     */
 
+    public function findExtension($extension, $tri)
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.extension = :val')
+            ->setParameter('val', $extension)
+            ->orderBy('m.'.$tri, 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
