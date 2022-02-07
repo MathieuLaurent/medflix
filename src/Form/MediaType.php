@@ -10,15 +10,17 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class MediaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
+            ->add('name', TextType::class)
             ->add('link', FileType::class,[
                 'mapped' => false,
+                'required'=> false
             ])
             ->add('category', EntityType::class,[
                 'class' => Category::class,
@@ -26,6 +28,7 @@ class MediaType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => false
             ])
+            
         ;
     }
 
