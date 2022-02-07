@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Index de l'utilisateur{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <h1>Index de l'utilisateur</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -19,13 +19,13 @@
                 <td>{{ ouser.id }}</td>
                 <td>{{ ouser.name }}</td>
                 <td>
-                    <a href="{{ path('editor_user_show', {'id': ouser.id}) }}">show</a>
-                    <a href="{{ path('editor_user_edit', {'id': ouser.id}) }}">edit</a>
+                    <a href="{{ path('editor_user_show', {'id': ouser.id}) }}">Afficher</a>
+                    <a href="{{ path('editor_user_edit', {'id': ouser.id}) }}">Editer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucun documents trouvés</td>
             </tr>
         {% endfor %}
         </tbody>

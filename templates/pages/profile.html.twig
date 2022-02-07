@@ -1,12 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Profile{% endblock %}
+{% block title %}Editer mon profil{% endblock %}
 
     {% block body %}
+
+
+        <div class="container py-3  d-flex justify-content-center">
+              <div class="card card-login m-5">
+                <form class="card-body p-5 m-3" method="post">
+      
+                    <div class="md-5 mt-md-4 pb-3">
+        
+                        <h2 class="fw-bold mb-2 title">Votre profil</h2>
+                        <p class="mb-5">Vous êtes connecté en tant que <span class="accent">{{ user.name }} {{ user.firstname }}</span></p>
+
+                    </div>
         
         {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+
+        <div class="form-floating mb-3">
+
+            {{ form_widget(form.name, {'attr': {'class': 'form-control search'}}) }}
+            {{ form_label(form.name, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
+    
+        </div>
+
+        <div class="form-floating mb-3">
+
+            {{ form_widget(form.firstname, {'attr': {'class': 'form-control search'}}) }}
+            {{ form_label(form.firstname, 'Prénom', {'label_attr': {'class': 'form-label'}}) }}
+    
+        </div>
+
+
+        <div class="form-floating mb-3">
+
+            {{ form_widget(form.email, {'attr': {'class': 'form-control search'}}) }}
+            {{ form_label(form.email, 'E-Mail', {'label_attr': {'class': 'form-label'}}) }}
+    
+        </div>
+    
+        <div class="d-grid gap-3 col-6 mx-auto mb-4">
+    
+            <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+    
+        </div>
+
+        {{ form_end(form) }}
+
+        </div>
+    </div>
+
+
+
         
     {% endblock %}

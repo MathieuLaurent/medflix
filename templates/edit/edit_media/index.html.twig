@@ -9,9 +9,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Link</th>
-                <th>CreatedAt</th>
+                <th>Nom</th>
+                <th>Lien</th>
+                <th>Créé le</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,17 +23,17 @@
                 <td>{{ medium.link }}</td>
                 <td>{{ medium.createdAt ? medium.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('edit_media_show', {'id': medium.id}) }}">show</a>
-                    <a href="{{ path('edit_media_edit', {'id': medium.id}) }}">edit</a>
+                    <a href="{{ path('edit_media_show', {'id': medium.id}) }}">Afficher</a>
+                    <a href="{{ path('edit_media_edit', {'id': medium.id}) }}">Editer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucun documents trouvés</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('edit_media_new') }}">Create new</a>
+    <a href="{{ path('edit_media_new') }}">Créer un nouveau</a>
 {% endblock %}
