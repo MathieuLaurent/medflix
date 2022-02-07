@@ -16,7 +16,7 @@
                 <h2 class="title mt-4">Explorer la galerie</h2>
 
                 <div class="filtres">
-                    {% include 'inc/_filtres.html.twig' %}
+                    {{ render(controller( 'App\\Controller\\FiltreController::renderFiltre')) }}
                 </div>
 
                     
@@ -112,7 +112,6 @@
                         
                     </div>
                 </div>
-
             </div>
 
     {% endfor %}

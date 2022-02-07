@@ -107,7 +107,7 @@ class EditorMediaController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'edit_media_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Media $medium, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Media $medium, EntityManagerInterface $entityManager, int $id, MediaRepository $mediaRepository): Response
     {
         $form = $this->createForm(MediaType::class, $medium);
         $form->handleRequest($request);
@@ -115,13 +115,17 @@ class EditorMediaController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $uploadedFile = $form['link']->getData();
+            
+            $edit = $mediaRepository->find($id);
+            $lien = $edit-> getLink();
+            
+            unlink($this->getParameter('kernel.project_dir').'/public/img/'.$lien);
+            unlink($this->getParameter('kernel.project_dir').'/public/imgMiniature/'.$lien);
+            unlink($this->getParameter('kernel.project_dir').'/public/imgInter/'.$lien);
+             
             $medium->setLink(''); //
-            $medium->setExtension('');//ici pour vider le nom de mon fichier dans mon entité
-            unlink($this->getParameter('kernel.project_dir').'/public/img'. $uploadedFile);
-            unlink($this->getParameter('kernel.project_dir').'/public/imgMiniature'. $uploadedFile);
-            unlink($this->getParameter('kernel.project_dir').'/public/imgInter'. $uploadedFile);//ici je supprime le fichier 
-            $this->getDoctrine()->getManager()->flush(); //sauvegarder dans la db
-      
+            $medium->setExtension('');
+            $entityManager->flush();
 
             if($uploadedFile && ($uploadedFile->guessExtension() == "jpg" || $uploadedFile->guessExtension() == "png" || $uploadedFile->guessExtension() == "jpeg" || $uploadedFile->guessExtension() == "gif")){
                 $destination = $this->getParameter('kernel.project_dir').'/public/img';
