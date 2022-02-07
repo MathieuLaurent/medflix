@@ -5,15 +5,13 @@
         <a href="{{ path('list_explo', {id:cat.id}) }}">{{ cat.name }}</a>
     </button>
          {% if cat.children is not null %}
-            {% for catItem in cat.children %}
             <div class="collapse show" id="{{cat.name}}-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li>
-                        <a href="#" class="link fs-6 collapsed" data-bs-toggle="collapse" data-bs-target="#{{catItem.name}}-collapse" aria-expanded="true">{{ render(controller( 'App\\Controller\\ListExploController::renderCategory', {catId: cat.id} )) }}</a>
+                        <a href="#" class="link fs-6 collapsed" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="true">{{ render(controller( 'App\\Controller\\ListExploController::renderCategory', {catId: cat.id} )) }}</a>
                     </li>
                 </ul>
             </div>
-            {% endfor %}
         {% endif %}
     </li>
 {% endfor %}
