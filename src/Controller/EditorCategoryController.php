@@ -24,7 +24,7 @@ class EditorCategoryController extends AbstractController
 
     #[Route('/new', name: 'editor_category_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
+    {   
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
