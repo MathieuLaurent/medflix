@@ -107,12 +107,60 @@ class EditorMediaController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'edit_media_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Media $medium, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Media $medium, EntityManagerInterface $entityManager, int $id, MediaRepository $mediaRepository): Response
     {
         $form = $this->createForm(MediaType::class, $medium);
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $uploadedFile = $form['link']->getData();
+            
+            $edit = $mediaRepository->find($id);
+            $lien = $edit-> getLink();
+            
+            unlink($this->getParameter('kernel.project_dir').'/public/img/'.$lien);
+            unlink($this->getParameter('kernel.project_dir').'/public/imgMiniature/'.$lien);
+            unlink($this->getParameter('kernel.project_dir').'/public/imgInter/'.$lien);
+             
+            $medium->setLink(''); //
+            $medium->setExtension('');
+            $entityManager->flush();
+
+            if($uploadedFile && ($uploadedFile->guessExtension() == "jpg" || $uploadedFile->guessExtension() == "png" || $uploadedFile->guessExtension() == "jpeg" || $uploadedFile->guessExtension() == "gif")){
+                $destination = $this->getParameter('kernel.project_dir').'/public/img';
+                $medium->setExtension($uploadedFile->guessExtension());
+                
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move($destination, $newFilename);
+                $medium->setLink($newFilename);
+
+                $this->resizer->resize($destination.'/'.$newFilename);
+                $this->resizer->resizeInter($destination.'/'.$newFilename);
+
+            }
+            elseif($uploadedFile && ($uploadedFile->guessExtension() == "pdf")){
+                $destination = $this->getParameter('kernel.project_dir').'/public/pdf';
+
+                $medium->setExtension($uploadedFile->guessExtension());
+                
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move($destination, $newFilename);
+                $medium->setLink($newFilename);
+            }
+            elseif($uploadedFile && ($uploadedFile->guessExtension() == "avi" || $uploadedFile->guessExtension() == "webm" || $uploadedFile->guessExtension() == "mp4")){
+                $destination = $this->getParameter('kernel.project_dir').'/public/video';
+                $medium->setExtension($uploadedFile->guessExtension());
+                
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move($destination, $newFilename);
+                $medium->setLink($newFilename);
+            }
+
+            $entityManager->persist($medium);
             $entityManager->flush();
 
             return $this->redirectToRoute('edit_media_index', [], Response::HTTP_SEE_OTHER);
