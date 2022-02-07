@@ -9,6 +9,7 @@
     --main-bg: rgb(11, 20, 22);
     --alt-bg: rgb(5, 9, 10);
     --border-color: rgb(70, 13, 17);
+    --alt-bg-transp: rgba(5, 9, 10, 0.2);
 
     --red: rgb(206, 39, 49);
     --orange: rgb(212, 103, 48);
@@ -224,10 +225,6 @@ input:-webkit-autofill{
 }
 
 
-.filtres { 
-    background: var(--alt-bg);
-}
-
 .side-btn { 
     position: relative;
     background: transparent;
@@ -304,41 +301,52 @@ input:-webkit-autofill{
 /*==================== CARD EXPLORER CSS CLASS ====================*/
 
 .card-custom { 
-    position: relative;
-    width: 20rem;
-    height: 12rem;
+    transition:0.5s;
+    cursor:pointer;
     background: var(--alt-bg);
     box-shadow: 1px 1px 20px 1px var(--alt-bg);
     
 }
 
-.card-custom-pdf {
-    height: 5rem;
-}
-
-.card-custom-video {
-    height: 20rem;
-}
+.card:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px var(--main-bg);
+  }
+  
+.card::before, .card::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale3d(0, 0, 1);
+    transition: transform .3s ease-out 0s;
+    background: var(--alt-bg-transp);
+    content: '';
+    pointer-events: none;
+  }
+.card::before {
+    transform-origin: left top;
+  }
+.card::after {
+    transform-origin: right bottom;
+  }
+.card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+    transform: scale3d(1, 1, 1);
+  }
 
 .img-custom {
-    width: 20rem;
-    height: 7rem;
+    height:150px;
+    width:100%;
     object-fit: cover;
     opacity: 0.8;
     transition: 500ms;
 }
 
-.video-custom { 
-    width: 20rem;
-}
-
-.img-custom:hover {
-    opacity:1;
-}
-
 .logo-card { 
     color: var(--red);
     padding: 0.2em;    
+    margin-right: 0.3rem;
     transition: 500ms;
 }
 
@@ -354,41 +362,39 @@ input:-webkit-autofill{
 
 .option:before {
     content:'';
-    width: 15em;
+    width: 8em;
     height: 1px;
     border-radius: 2px;
     background: var(--border-color);
     position:absolute;
-    left: -15em;
+    left: -9.2rem;
     bottom: 1em;
 
 }
 
-/*==================== CANVAS CARD EXPLO CSS CLASS ====================*/
-
-.canvas-custom { 
-    position: relative; 
-    background: var(--main-bg);
-    color: var(--font-color);
-    height: 20rem;
+.row {
+    margin-right: 0;
 }
 
-.canvas-custom:before {
-    content: '';
-    position: absolute;
-    top:0;
-    width: 100%;
-    height: 3.2rem;
-    background: var(--green);
-    z-index: -1;
+/*==================== MODAL CARD EXPLO CSS CLASS ====================*/
 
-}
+.modal-content { 
+    background-color: var(--alt-bg) !important; 
+ }
 
-.img-canvas-custom { 
-    width: 400px;
-    height: auto;
-}
+ .modal-header { 
+     border-bottom: 1px solid var(--green);
+ }
 
+ .modal-footer {
+     border-top: 1px solid var(--green);
+ }
+
+ .img-modal { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
 
 /*==================== FOOTER CSS CLASS ====================*/
 

@@ -9,9 +9,9 @@
             {% include 'inc/_sidebar.html.twig' %}
         </div>
 
-        <div class="p-2 bd-highlight">
+        <div class="p-2 bd-highlight justify-content-center">
 
-            <div class="container">
+
 
                 <h2 class="title mt-4">Explorer la galerie</h2>
 
@@ -24,99 +24,141 @@
             
         {% if img is not null %}
             <h5 class="mt-4">Les images</h5>
-                <section class="container d-flex justify-content-between flex-wrap p-4">
-                  {% for imgItem in img %}
-                        <div class="card card-custom mb-4">
-                            <img src="{{asset('/imgMiniature/' ~ imgItem.link)}}" class="card-img-top img-custom">
-                            <div class="card-body">
-                                <h5 class="card-title">{{imgItem.name}}</h5>
-                                
-                                <div class="option p-2">
-                                    <a href="/" target="_blank">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download logo-card" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                                        </svg>
-                                    </a>
 
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search logo-card" viewBox="0 0 16 16" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
-                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                    </svg>
+            <div class="row row-cols-2 row-cols-xl-4 justify-content-center p-3 box">
+
+                {% for imgItem in img %}
+                        <div class="col mb-2">
+                            <div class="card card-custom mb-4 p-1">                        
+                                
+                                <img class="card-img-top img-custom" src="{{asset('/imgMiniature/' ~ imgItem.link)}}"/>
+                                
+                                <div class="card-body p-3">
+                                    
+                                        
+                                        <h5 class="card-title">{{imgItem.name}} </h5>
+    
+                                        <div class="d-flex justify-content-end option">
+
+                                            <a href="/" target="_blank">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download logo-card" viewBox="0 0 16 16">
+                                                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                                </svg>
+                                            </a>
+                        
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search logo-card" viewBox="0 0 16 16" data-bs-toggle="modal" data-bs-target="#{{imgItem.name}}">
+                                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                            </svg>
+    
+                                        </div>
+                                    
                                 </div>
                             </div>
-                          </div>
                         </div>
 
-                          <div class="offcanvas offcanvas-bottom canvas-custom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-                            <div class="offcanvas-header">
-                              <h5 class="offcanvas-title canvas-title-custom" id="offcanvasBottomLabel">{{imgItem.name}}</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                            <!-- Modal -->
+                    <div class="modal fade" id="{{imgItem.name}}" tabindex="-1" aria-labelledby="{{imgItem.name}}Label" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{imgItem.name}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="offcanvas-body small">
-                              
-                                <img src="{{asset('/imgInter/' ~ imgItem.link)}}" class="img-canvas-custom">
-                                
+                            <div class="modal-body">
+                                <img src="{{asset('/imgInter/' ~ imgItem.link)}}" class="img-modal">
                             </div>
-                          </div>  
-            {% endfor %}
-                </section>
-        {% endif %}
+                            <div class="modal-footer">
+                            <button type="button" class="btn" data-bs-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                {% endfor %}
+    
+            </div>
+         {% endif %}
+
 <!------------------------------------------------------------------------------------------- CARD VIDEO -->
 
-            {% if video is not null %}
+{% if video is not null %}
+<h5 class="mt-4">Les vidéos</h5>
 
-                <h5 class="mt-4">Les videos</h5>
-                    <section class="container d-flex justify-content-between flex-wrap p-4">
-                {% for videoItem in video %}
-                        <div class="card card-custom card-custom-video mb-4">
-                            <video src="{{asset('/video/' ~ videoItem.link)}}" class="card-img-top video-custom"></video>
-                            <div class="card-body">
-                                <h5 class="card-title">{{videoItem.name}}</h5>
-                                
-                                <div class="option p-2">
-                                    <a href="/" target="_blank">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download logo-card" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                          </div>
-                    {% endfor %}
-                    </section>
-                {% endif %}
- <!------------------------------------------------------------------------------------------- CARD PDF -->
+<div class="row row-cols-2 row-cols-xl-4 justify-content-center p-3 box">
 
-            {% if pdf is not null %}
-                <h5 class="mt-4">Les pdfs</h5>
-                    <section class="container d-flex justify-content-between flex-wrap p-4">
-                {% for pdfItem in pdf %}
-                        <div class="card card-custom card-custom-pdf mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">{{pdfItem.name}}</h5>
-                                
-                                <div class="option p-2">
-                                    <a href="/" target="_blank">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download logo-card" viewBox="0 0 16 16">
-                                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                          </div>
-                {% endfor %}
-                    </section>
+    {% for videoItem in video %}
+            <div class="col mb-2">
+                <div class="card card-custom mb-4 p-1">                        
                     
-            {% endif %}
+                    <video controls class="card-img-top video-custom">
+                        <source src="{{asset('/video/' ~ videoItem.link)}}">
+                    </video>
+                    
+                    <div class="card-body p-3">
+                        
+                            
+                            <h5 class="card-title">{{videoItem.name}} </h5>
 
+                            <div class="d-flex justify-content-end option">
 
+                                <a href="/" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download logo-card" viewBox="0 0 16 16">
+                                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                    </svg>
+                                </a>
+
+                            </div>
+                        
+                    </div>
+                </div>
             </div>
 
-        </div>
+    {% endfor %}
+
+</div>
+{% endif %}
+
+<!------------------------------------------------------------------------------------------- CARD PDF -->
+
+{% if pdf is not null %}
+<h5 class="mt-4">Les pdf</h5>
+
+<div class="row row-cols-2 row-cols-xl-4 justify-content-center p-3 box">
+
+    {% for pdfItem in pdf %}
+            <div class="col mb-2">
+                <div class="card card-custom mb-4 p-1">                        
+                    
+                    <div class="card-body p-3">
+                        
+                            
+                            <h5 class="card-title">{{pdfItem.name}} </h5>
+
+                            <div class="d-flex justify-content-end option">
+
+                                <a href="/" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download logo-card" viewBox="0 0 16 16">
+                                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                    </svg>
+                                </a>
+
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            
+
+    {% endfor %}
+
+</div>
+{% endif %}
+
     </div>
-
-
+                    
+</div>
 
 {% endblock %}
