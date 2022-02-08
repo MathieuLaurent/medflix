@@ -13,7 +13,7 @@ class FiltreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->setAction('filtre/')
+            ->setAction('/profile/filtre')
             ->setMethod('GET')
             ->add('createdAt', ChoiceType::class, [
                 'choices' => [

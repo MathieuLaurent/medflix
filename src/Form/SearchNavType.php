@@ -14,7 +14,7 @@ class SearchNavType extends AbstractType
     {
         $builder
             ->setMethod('GET')
-            ->setAction('searchNav/')
+            ->setAction('/profile/searchNav')
             ->add('name', SearchType::class, [
                 'attr' => [
                 'placeholder' => 'Rechercher..',
