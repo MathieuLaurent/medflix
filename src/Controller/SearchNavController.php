@@ -11,28 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
-#[Route('profile/')]
+#[Route('/profile')]
 class SearchNavController extends AbstractController
 {
 
-    public function renderSearchNav(Request $request)
-    {
-        $formSearchNav = $this->createForm(SearchNavType::class);
-        $formSearchNav->handleRequest($request);
-
-        if($formSearchNav->isSubmitted() && $formSearchNav->isValid())
-        {
-            return $this->redirectToRoute('searchNav', [
-                'formData' => $formSearchNav->getData('name')->getName(),
-            ]);
-        }
-
-        return $this->render('inc/_searchNav.html.twig', [
-            'formSearchNav' => $formSearchNav->createView()
-        ]);
-    }
-
-    #[Route('searchNav/', name:'searchNav', methods:['GET'])]
+    #[Route('/searchNav', name:'searchNav', methods:['GET'])]
     public function recherche(Request $request, MediaRepository $media, CategoryRepository $category): Response
     {
         $var = $request->query->all();
@@ -71,6 +54,21 @@ class SearchNavController extends AbstractController
             'categorys' => $category->findByParentField(NULL),
     ]);
 
+    }
+
+    public function renderSearchNav(Request $request)
+    {
+        $formSearchNav = $this->createForm(SearchNavType::class);
+        $formSearchNav->handleRequest($request);
+
+        if($formSearchNav->isSubmitted() && $formSearchNav->isValid())
+        {
+            return $this->redirectToRoute('searchNav');
+        }
+
+        return $this->render('inc/_searchNav.html.twig', [
+            'formSearchNav' => $formSearchNav->createView()
+        ]);
     }
 
 }
