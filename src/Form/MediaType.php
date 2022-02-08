@@ -24,7 +24,6 @@ class MediaType extends AbstractType
             ])
             ->add('category', EntityType::class,[
                 'class' => Category::class,
-                'expanded' => true,
                 'choice_label' => 'name',
                 'multiple' => false,
                 
