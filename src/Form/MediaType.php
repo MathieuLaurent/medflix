@@ -20,7 +20,7 @@ class MediaType extends AbstractType
             ->add('name', TextType::class)
             ->add('link', FileType::class,[
                 'mapped' => false,
-                'required'=> false
+                'required'=> true
             ])
             ->add('category', EntityType::class,[
                 'class' => Category::class,

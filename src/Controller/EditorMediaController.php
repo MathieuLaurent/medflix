@@ -46,12 +46,12 @@ class EditorMediaController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-
             $medium->setUserAuthor($user);
 
             $medium->setCreatedAt(new \DateTimeImmutable('now'));
 
             $uploadedFile = $form['link']->getData();
+            dd($uploadedFile);
             
             if($uploadedFile && ($uploadedFile->guessExtension() == "jpg" || $uploadedFile->guessExtension() == "png" || $uploadedFile->guessExtension() == "jpeg" || $uploadedFile->guessExtension() == "gif")){
                 $destination = $this->getParameter('kernel.project_dir').'/public/img';
@@ -85,6 +85,7 @@ class EditorMediaController extends AbstractController
                 $uploadedFile->move($destination, $newFilename);
                 $medium->setLink($newFilename);
             }
+            
 
             $entityManager->persist($medium);
             $entityManager->flush();
@@ -122,6 +123,8 @@ class EditorMediaController extends AbstractController
             unlink($this->getParameter('kernel.project_dir').'/public/img/'.$lien);
             unlink($this->getParameter('kernel.project_dir').'/public/imgMiniature/'.$lien);
             unlink($this->getParameter('kernel.project_dir').'/public/imgInter/'.$lien);
+            unlink($this->getParameter('kernel.project_dir').'/public/pdf/'.$lien);
+            unlink($this->getParameter('kernel.project_dir').'/public/video/'.$lien);
             
             $medium->setLink(''); 
             $medium->setExtension('');
