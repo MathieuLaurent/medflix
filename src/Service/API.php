@@ -18,7 +18,6 @@ class API{
         $this->client = $client;
     }
 
-    #[Route('/searchNav', name:'searchNav', methods:['GET'])]
     public function recherche(Request $request, MediaRepository $media, CategoryRepository $category): Response
     {
         $var = $request->query->all();
