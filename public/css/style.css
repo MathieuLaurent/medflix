@@ -447,7 +447,7 @@ input[type=checkbox] {
 }
 
 input[type="checkbox"]:checked, input[type="checkbox"]:checked:before {
-    background: var(--border-color);
+    background: var(--green);
   }
 
 input[type="radio"] {
@@ -461,7 +461,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked {
-	background-color: var(--border-color);
+	background-color: var(--green);
 }
 
 
