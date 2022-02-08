@@ -31,10 +31,7 @@ class Media
         )]
     #[Assert\NotBlank(message:"Vous devez indiquer un titre")]
     #[Assert\Regex(pattern:"/^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{2,60}$/", match:true, message:"Les caractères spéciaux sont interdits dans le titre")]
-<<<<<<< HEAD
-=======
     
->>>>>>> deaded2fa7cca1c86f672ff34b6884d7eacd5c68
     private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
