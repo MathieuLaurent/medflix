@@ -51,7 +51,7 @@ class EditorMediaController extends AbstractController
             $medium->setCreatedAt(new \DateTimeImmutable('now'));
 
             $uploadedFile = $form['link']->getData();
-            dd($uploadedFile);
+            
             
             if($uploadedFile && ($uploadedFile->guessExtension() == "jpg" || $uploadedFile->guessExtension() == "png" || $uploadedFile->guessExtension() == "jpeg" || $uploadedFile->guessExtension() == "gif")){
                 $destination = $this->getParameter('kernel.project_dir').'/public/img';
