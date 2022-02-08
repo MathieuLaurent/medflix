@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/profile')]
 class ListExploController extends AbstractController
 {
-    #[Route('/list/explo/{id}', name: 'list_explo')]
+    #[Route('/list/{id}', name: 'list_explo')]
     public function listExplo(int $id, MediaRepository $mediaRepository, CategoryRepository $category): Response
     {
         $list = $mediaRepository->findByCategoryField($id);
