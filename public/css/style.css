@@ -37,16 +37,17 @@ body {
 
 a {
     text-decoration: none;
-    color:var(--font-color)
+    color:var(--font-color);
+    transition: 500ms;
+}
+
+a:hover { 
+    text-decoration: none;
+    color: var(--green);
 }
 
 h1, h2, h3, h4, h5, h6, label { 
   font-variant-caps: all-petite-caps;
-}
-
-a { 
-    text-decoration: none;
-    color: var(--font-color);
 }
 
 .titre { 
@@ -174,6 +175,14 @@ th, td {
 
 }
 
+.nav-search { 
+    margin-top: 1px;
+}
+
+.search-size { 
+    width: 20rem;
+}
+
 .search { 
     background-color: var(--main-bg);
     color: var(--font-color);
@@ -188,6 +197,7 @@ th, td {
 
 .form-control:focus { 
     background-color: var(--main-bg);
+    border: var(--border-color);
 }
 
 input:-webkit-autofill,
@@ -199,8 +209,17 @@ input:-webkit-autofill:active{
 }
 
 input:-webkit-autofill{
-    -webkit-text-fill-color: var(--red) !important;
+    -webkit-text-fill-color: var(--font-color) !important;
 }
+
+ .form-control:active,
+ .form-control:focus,
+ .form-control:focus:active {
+   color: var(--font-color);
+   border: 2px solid var(--alt-bg);
+ }
+
+
 
 .accent { 
     position: relative;
@@ -215,6 +234,11 @@ input:-webkit-autofill{
     width: 100%;
     height: 1px;
 }
+
+.form-control:focus {
+    border-color: var(--main-bg);
+    box-shadow: inset 0 0 0 1px var(--alt-bg), 0 0 0 15px var(--alt-bg-transp);
+  }
 
 
 /*==================== SIDEBAR CSS CLASS ====================*/
