@@ -68,8 +68,21 @@ h1, h2, h3, h4, h5, h6, label {
     border-top: 2px solid var(--green);
 }
 
-.subtitle {
-    color: var(--red);
+.sub-title {
+    position: relative;
+    color: var(--font-color);
+}
+
+.sub-title::after { 
+    content: "";
+    position: absolute;
+    left: 2%;
+    width: 12%;
+    height: 1.5em;
+    background: none;
+    border-bottom: 1px solid var(--green);
+    z-index: -1;
+
 }
 
 th, td {
@@ -161,8 +174,6 @@ th, td {
     background: var(--main-bg);
     color: var(--font-color);
 }
-
-
 
 
 /*==================== FORM CSS CLASS ====================*/

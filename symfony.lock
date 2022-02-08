@@ -1,4 +1,18 @@
 {
+    "api-platform/core": {
+        "version": "2.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "05b57782a78c21a664a42055dc11cf1954ca36bb"
+        },
+        "files": [
+            "./config/packages/api_platform.yaml",
+            "./config/routes/api_platform.yaml",
+            "./src/Entity/.gitignore"
+        ]
+    },
     "behat/transliterator": {
         "version": "v1.3.0"
     },
@@ -85,19 +99,15 @@
     "egulias/email-validator": {
         "version": "3.1.2"
     },
+    "fig/link-util": {
+        "version": "1.2.0"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
     "gedmo/doctrine-extensions": {
         "version": "v3.5.0"
     },
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 69a9be4137316ecaa5f6ee3256003d97716763c8
->>>>>>> dfc1b266d7a172a0355257a1187ebd0a770ed9f9
->>>>>>> 85a7dfe2011e8f0d6d5b56334bd2c82b92b3e3a9
     "imagine/imagine": {
         "version": "1.2.4"
     },
@@ -106,6 +116,18 @@
     },
     "monolog/monolog": {
         "version": "2.3.5"
+    },
+    "nelmio/cors-bundle": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.5",
+            "ref": "6bea22e6c564fba3a1391615cada1437d0bde39c"
+        },
+        "files": [
+            "./config/packages/nelmio_cors.yaml"
+        ]
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
@@ -531,5 +553,8 @@
     },
     "webmozart/assert": {
         "version": "1.10.0"
+    },
+    "willdurand/negotiation": {
+        "version": "3.1.0"
     }
 }

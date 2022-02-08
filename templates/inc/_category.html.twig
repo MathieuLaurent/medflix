@@ -1,7 +1,7 @@
 <ul class="list-unstyled">
 {% for cat in categorys %}
     <li class="list-unstyled">
-    <div class="btn-toggle align-items-center collapsed side-btn side-link fs-6" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="true">
+    <div class="btn-toggle align-items-center collapsed side-btn side-link fs-6" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="false">
     </div>
     <div class="align-items-center side-link fs-6">
         <a href="{{ path('list_explo', {id:cat.id}) }}">{{ cat.name }}</a>
@@ -10,7 +10,7 @@
             <div class="collapse show" id="{{cat.name}}-collapse">
                 <ul class="link list-unstyled fw-normal pb-1 small">
                     <li>
-                        <a href="#" class="collapsed" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="true">{{ render(controller( 'App\\Controller\\ListExploController::renderCategory', {catId: cat.id} )) }}</a>
+                        <a href="#" class="collapsed" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="false">{{ render(controller( 'App\\Controller\\ListExploController::renderCategory', {catId: cat.id} )) }}</a>
                     </li>
                 </ul>
             </div>
