@@ -2,9 +2,9 @@
 {% for cat in categorys %}
     <li class="list-unstyled">
     <div class="btn-toggle align-items-center collapsed side-btn side-link fs-6" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="true">
-        <a href="{{ path('list_explo', {id:cat.id}) }}">{{ cat.name }}</a>
+       
     </div>
-
+        <a href="{{ path('list_explo', {id:cat.id}) }}">{{ cat.name }}</a>
          {% if cat.children is not null %}
             <div class="collapse show" id="{{cat.name}}-collapse">
                 <ul class="link list-unstyled fw-normal pb-1 small">

@@ -43,7 +43,7 @@ class ListExploController extends AbstractController
 
 
 
-        return $this->render('pages/listExplo.html.twig', [
+        return $this->render('pages/files.html.twig', [
             'img' => $img,
             'pdf' => $pdf,
             'video' => $video,
