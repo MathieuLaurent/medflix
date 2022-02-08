@@ -27,7 +27,7 @@ class Category
         
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank(message:"Vous devez indiquer un titre")]
-    #[Assert\Regex(pattern:"/^[a-zA-Z0-9 ]+$/", match:true, message:"Les caractères spéciaux sont interdits dans le titre")]
+    #[Assert\Regex(pattern:"/^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{5,60}$/", match:true, message:"Les caractères spéciaux sont interdits dans le titre")]
     private $name;
 
     #[ORM\OneToMany(targetEntity:'Category', mappedBy:'parent')]
