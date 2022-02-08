@@ -21,7 +21,9 @@ class FiltreController extends AbstractController
         
         $var = $request->query->all();
         $ordreTri = $var['filtre']['createdAt'];
-        $extension = $var['filtre']['extension'];
+        if(!empty($var['filtre']['extension'])){
+            $extension = $var['filtre']['extension'];
+        }
         
         if(!empty($ordreTri) && $ordreTri ==  'date'){
             $result  = "createdAt";
@@ -31,43 +33,21 @@ class FiltreController extends AbstractController
         }
 
         if(!empty($extension)){
-            foreach($extension as $item){
-                if($item == "jpg"){
-                    $img[] = $media->findExtension("jpg", $result);
+            $list = $media->findExtension($extension, $result);
+            foreach($list as $item){
+                if($item->getExtension() == "jpg" || $item->getExtension() == "png" || $item->getExtension() == "jpeg" || $item->getExtension() == "gif"){
+                    $img[] = $item;
                 }
-                elseif($item == "png"){
-                    $img[] = $media->findExtension('png', $result);
+                elseif($item->getExtension() == "pdf"){
+                    $pdf[] = $item;
                 }
-                elseif($item == "jpeg"){
-                    $img[] = $media->findExtension('jpeg', $result);
-                }
-                elseif($item == "gif"){
-                    $img[] = $media->findExtension('gif', $result);
-                }
-                elseif($item == "pdf"){
-                    $pdf[] = $media->findExtension('pdf', $result);
-                }
-                elseif($item == "webm"){
-                    $video[] = $media->findExtension('webm', $result);
-                }
-                elseif($item == "mp4"){
-                    $video[] = $media->findExtension('mp4', $result);
-                }
-                elseif($item == "avi"){
-                    $video[] = $media->findExtension('avi', $result);
-                }
-                elseif($item == "img"){
-                    $img[] = $media->findExtension('jpg', $result);
-                    $img[] = $media->findExtension('jpeg', $result);
-                    $img[] = $media->findExtension('png', $result);
-                    $img[] = $media->findExtension('gif', $result);
-                }
-                elseif($item == "video"){
-                    $video[] = $media->findExtension('webm', $result);
-                    $video[] = $media->findExtension('mp4', $result);
-                    $video[] = $media->findExtension('avi', $result);
+                elseif($item->getExtension() == "mp4" ||$item->getExtension() == "avi" ||$item->getExtension() == "webm"){
+                    $video[] = $item;
                 }
             }
+        }
+
+            
             if(empty($img)){
                 $img = null;
             }
@@ -77,9 +57,8 @@ class FiltreController extends AbstractController
             if(empty($video)){
                 $video = null;
             }
-        }
         
-        return $this->render('pages/filtres.html.twig', [
+        return $this->render('pages/files.html.twig', [
             'img' => $img,
             'pdf' => $pdf,
             'video' => $video,

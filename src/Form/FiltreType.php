@@ -32,13 +32,11 @@ class FiltreType extends AbstractType
             ])
             ->add('extension', ChoiceType::class, [
                 'choices' => [
-                    'images' => 'img',
                     'jpg' => 'jpg',
                     'jpeg' => 'jpeg',
                     'png' => 'png',
                     'gif' => 'gif',
                     'pdf' => 'pdf',
-                    'video' => 'video',
                     'mp4' => 'mp4',
                     'avi' => 'avi',
                     'webm' => 'webm'

@@ -21,7 +21,7 @@
                   </boutton>
                 </a></li>
             {% else %}
-
+                    <li>{{ render(controller( 'App\\Controller\\SearchNavController::renderSearchNav')) }}</li>
                     <li class="nav-item">
                       <a class="nav-link px-4 fs-5" href="{{path('files')}}"> Explorer </a>
                     </li>
@@ -37,8 +37,6 @@
                         <li class="nav-item"><a class="dropdown-item" href="{{path('app_logout')}}">Déconnexion</a></li>
                     </ul>
                 </li>
-                
-                
             {% endif %}
         </ul>
     </nav>

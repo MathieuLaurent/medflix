@@ -50,12 +50,20 @@ class MediaRepository extends ServiceEntityRepository
 
     public function findExtension($extension, $tri)
     {
+        return  $this->createQueryBuilder('m')
+                        ->orWhere('m.extension IN(:extension)')
+                        ->setParameter('extension', array_values($extension))
+                        ->orderBy('m.'.$tri, 'ASC')
+                        ->getQuery()
+                        ->getResult();
+    }
+
+    public function searchNav($name)
+    {
         return $this->createQueryBuilder('m')
-            ->andWhere('m.extension = :val')
-            ->setParameter('val', $extension)
-            ->orderBy('m.'.$tri, 'ASC')
-            ->getQuery()
-            ->getResult()
-            ;
+                    ->andWhere('m.name LIKE :val')
+                    ->setParameter('val', '%'.$name.'%')
+                    ->getQuery()
+                    ->getResult();
     }
 }
