@@ -1,23 +1,32 @@
 <?php
+namespace App\Service;
 
-namespace App\Controller;
-
-use App\Entity\Media;
-use App\Repository\CategoryRepository;
+use App\Form\SearchNavType;
 use App\Repository\MediaRepository;
-use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\CategoryRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+ 
+class API{
 
-#[Route('/profile')]
-class ListExploController extends AbstractController
-{
-    #[Route('/list/explo/{id}', name: 'list_explo')]
-    public function listExplo(int $id, MediaRepository $mediaRepository, CategoryRepository $category): Response
+    private $client;
+
+    public function __construct(HttpClientInterface $client){
+        $this->client = $client;
+    }
+
+    #[Route('/searchNav', name:'searchNav', methods:['GET'])]
+    public function recherche(Request $request, MediaRepository $media, CategoryRepository $category): Response
     {
-        $list = $mediaRepository->findByCategoryField($id);
+        $var = $request->query->all();
+        $result = $var['search_nav']['name'];
         
+        if(!empty($result)){
+            $list = $media->searchNav($result);
+        }
 
         foreach($list as $item){
             if($item->getExtension() == "jpg" || $item->getExtension() == "png" || $item->getExtension() == "jpeg" || $item->getExtension() == "gif"){
@@ -29,8 +38,8 @@ class ListExploController extends AbstractController
             elseif($item->getExtension() == "mp4" ||$item->getExtension() == "avi" ||$item->getExtension() == "webm"){
                 $video[] = $item;
             }
-         
         }
+
         if(empty($img)){
             $img = null;
         }
@@ -41,22 +50,12 @@ class ListExploController extends AbstractController
             $video = null;
         }
 
-
-
-        return $this->render('pages/files.html.twig', [
+        return $this->render('pages/files.html.twig', [ 
             'img' => $img,
             'pdf' => $pdf,
             'video' => $video,
-            'category' => $category->find($id),
-            'categorys' => $category->findByParentField(NULL)
-        ]);
+            'categorys' => $category->findByParentField(NULL),
+    ]);
+
     }
-
-    public function renderCategory(CategoryRepository $category, int $catId){
-
-        return $this->render('inc/_category.html.twig', [
-            'categorys' => $category->findByParentField($catId)
-        ]);
-    }
-
 }
