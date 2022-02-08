@@ -1,21 +1,28 @@
 <ul class="list-unstyled">
-{% for cat in categorys %}
-    <li class="list-unstyled">
-    <div class="btn-toggle align-items-center collapsed side-btn side-link fs-6" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="false">
-    </div>
-    <div class="align-items-center side-link fs-6">
-        <a href="{{ path('list_explo', {id:cat.id}) }}">{{ cat.name }}</a>
-    </div>
-         {% if cat.children is not null %}
-            <div class="collapse show" id="{{cat.name}}-collapse">
-                <ul class="link list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="#" class="collapsed" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="false">{{ render(controller( 'App\\Controller\\ListExploController::renderCategory', {catId: cat.id} )) }}</a>
-                    </li>
-                </ul>
-            </div>
-        {% endif %}
-    </li>
-{% endfor %}
-</ul>
+    {% for cat in categorys %}
+        <li class="list-unstyled">           
+            <span class="btn-toggle align-items-center collapsed side-link" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="true">
+            </span>
+    
+            <span class="align-items-center">
+                <a href="{{ path('list_explo', {id:cat.id}) }}" class="side-link">
+                    {{ cat.name }}</a>
+            </span>
+            
+             {% if cat.children is not null %}
+                <div class="collapse show" id="{{cat.name}}-collapse">
+                    <ul class="list-unstyled fw-normal small link">
+                        <li>
+                            <a href="#" class="collapsed" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="true">{{ render(controller( 'App\\Controller\\ListExploController::renderCategory', {catId: cat.id} )) }}</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            {% endif %}
+
+        </li>
+
+    {% endfor %}
+
+    </ul>
 

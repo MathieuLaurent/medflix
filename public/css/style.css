@@ -33,6 +33,7 @@ body {
     color: var(--font-color);
     font-family: 'Playfair Display', serif;
     opacity: 0.9;
+    min-height: 100vh;
 }
 
 a {
@@ -254,9 +255,10 @@ input:-webkit-autofill{
 
 .sidebar { 
     position: relative;
-    width: 300px;
+    width: 250px;
+    height: 100%;
+    border-right: 1px solid var(--alt-bg);
 }
-
 
 .side-btn { 
     position: relative;
@@ -268,15 +270,6 @@ input:-webkit-autofill{
     color: var(--red);
 }
 
-.side-btn:first-child:after { 
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 250px;
-    border-top: 1px solid var(--red);
-}
 
 .side-link {
     padding-left: 1rem;
@@ -286,23 +279,28 @@ input:-webkit-autofill{
 .side-link:first-child { 
     color: var(--green);
     text-transform: uppercase;
-    letter-spacing: 0.05rem;
+    letter-spacing: 0.08rem;
     opacity: 0.8;
     transition: 600ms;
-
 }
+
+
 
 .link { 
     display:block;
+    width: 100%;
     text-decoration: none; 
     color: var(--font-color);
     padding: 0 0.5rem;
     transition: 500ms; 
+    padding: 1em;
 }
 
-.link:hover {
-    color: var(--font-color);
+.side-link:hover {
+    color: var(--green);
+    padding: 0.5em;
 }
+
 
 .btn-toggle { 
     position: relative;
@@ -310,31 +308,16 @@ input:-webkit-autofill{
 
 .btn-toggle:before { 
     content: '〉'; 
+    color: var(--green);
     position: absolute; 
     left: 0;
-    transition: 0.70s;
-    -webkit-transition: 0.70s;
-    -moz-transition: 0.70s;
-    -ms-transition: 0.70s;
-    -o-transition: 0.70s;
-
+    transition: 500ms;
 }
 
-
-.btn-toggle:hover:before {
-    cursor: pointer;
-    transition: 0.70s;
-    -webkit-transition: 0.70s;
-    -moz-transition: 0.70s;
-    -ms-transition: 0.70s;
-    -o-transition: 0.70s;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-    margin-top: 0.3rem;
+.btn-toggle:before:hover {
+    color: var(--red);
 }
+
 
 /*==================== CARD EXPLORER CSS CLASS ====================*/
 
@@ -486,7 +469,7 @@ input[type="radio"]:checked {
 footer {
     background: var(--alt-bg);
     width: 100%;
-    height: fit-content;
+    height: 15vh;
 }
 
 .border-color {
