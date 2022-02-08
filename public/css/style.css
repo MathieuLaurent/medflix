@@ -35,7 +35,7 @@ body {
     opacity: 0.9;
 }
 
-a{
+a {
     text-decoration: none;
     color:var(--font-color)
 }
@@ -221,14 +221,12 @@ input:-webkit-autofill{
 
 .sidebar { 
     position: relative;
-    width: 280px;
+    width: 300px;
 }
 
 
 .side-btn { 
     position: relative;
-    background: transparent;
-    border: none; 
     color: var(--green);
     transition: 500ms;
 }
@@ -237,33 +235,40 @@ input:-webkit-autofill{
     color: var(--red);
 }
 
-.side-btn::after { 
+.side-btn:first-child:after { 
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     width: 250px;
-    height: 0.5em;
-    border-top: 2px solid var(--red);
+    border-top: 1px solid var(--red);
+}
+
+.side-link {
+    padding-left: 1rem;
+    letter-spacing: 1.1px;
+}
+
+.side-link:first-child { 
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    opacity: 0.8;
+    transition: 600ms;
+
 }
 
 .link { 
     display:block;
     text-decoration: none; 
     color: var(--font-color);
-    padding: 0 1.2rem;
+    padding: 0 0.5rem;
     transition: 500ms; 
 }
 
 .link:hover {
-    background-color: var(--alt-bg);
-    border-right: 1px solid var(--orange);
     color: var(--font-color);
-}
-
-.sub-link { 
-    margin-left: 2em;
 }
 
 .btn-toggle { 
@@ -286,21 +291,22 @@ input:-webkit-autofill{
 .btn-toggle:hover:before {
     cursor: pointer;
     transition: 0.70s;
-  -webkit-transition: 0.70s;
-  -moz-transition: 0.70s;
-  -ms-transition: 0.70s;
-  -o-transition: 0.70s;
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  margin-top: 0.3rem;
+    -webkit-transition: 0.70s;
+    -moz-transition: 0.70s;
+    -ms-transition: 0.70s;
+    -o-transition: 0.70s;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    margin-top: 0.3rem;
 }
 
 /*==================== CARD EXPLORER CSS CLASS ====================*/
 
 .card-custom { 
+    position: relative;
     transition:0.5s;
     cursor:pointer;
     background: var(--alt-bg);
@@ -308,12 +314,12 @@ input:-webkit-autofill{
     
 }
 
-.card:hover{
+.card-custom:hover{
     transform: scale(1.05);
     box-shadow: 10px 10px 15px var(--main-bg);
   }
   
-.card::before, .card::after {
+.card-custom::before, .card-custom::after {
     position: absolute;
     top: 0;
     right: 0;
@@ -325,13 +331,13 @@ input:-webkit-autofill{
     content: '';
     pointer-events: none;
   }
-.card::before {
+.card-custom::before {
     transform-origin: left top;
   }
-.card::after {
+.card-custom::after {
     transform-origin: right bottom;
   }
-.card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+.card-custom:hover::before, .card-custom:hover::after, .card-custom:focus::before, .card-custom:focus::after {
     transform: scale3d(1, 1, 1);
   }
 
@@ -360,15 +366,14 @@ input:-webkit-autofill{
     bottom: 0;
 }
 
-.option:before {
+.card-title:before {
     content:'';
-    width: 8em;
-    height: 1px;
-    border-radius: 2px;
+    position: absolute; 
+    bottom: 0;
+    left:0; 
     background: var(--border-color);
-    position:absolute;
-    left: -9.2rem;
-    bottom: 1em;
+    width: 100%;
+    height: 1px;
 
 }
 
@@ -394,6 +399,7 @@ input:-webkit-autofill{
     display: block;
     margin-left: auto;
     margin-right: auto;
+
  }
 
 /*==================== FOOTER CSS CLASS ====================*/
