@@ -31,16 +31,19 @@ class Media
         )]
     #[Assert\NotBlank(message:"Vous devez indiquer un titre")]
     #[Assert\Regex(pattern:"/^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{2,60}$/", match:true, message:"Les caractères spéciaux sont interdits dans le titre")]
+<<<<<<< HEAD
+=======
     
+>>>>>>> deaded2fa7cca1c86f672ff34b6884d7eacd5c68
     private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
-    //#[Assert\File(
-     //        maxSize : "50M",
-      //       mimeTypes : ["image/jpeg", "image/jpg", "image/gif", "image/png", "application/pdf", "video/x-msvideo", "video/webm", "video/mpeg"],
-     //        maxSizeMessage : "Le maximum autorisé est de 50MB.",
-     //        mimeTypesMessage : "Seuls les fichiers de type image, application ou vidéo sont autorisés."
-       //  )]
+    #[Assert\File(
+            maxSize : "50M",
+            mimeTypes : ["image/jpeg", "image/jpg", "image/gif", "image/png", "application/pdf", "video/x-msvideo", "video/webm", "video/mpeg"],
+            maxSizeMessage : "Le maximum autorisé est de 50MB.",
+            mimeTypesMessage : "Seuls les fichiers de type image, application ou vidéo sont autorisés."
+      )]
     private $link;
 
     #[ORM\Column(type: 'datetime_immutable')]
