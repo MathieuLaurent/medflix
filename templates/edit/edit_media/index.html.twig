@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Lien</th>
+                <th>Catégorie</th>
                 <th>Créé le</th>
                 <th>actions</th>
             </tr>
@@ -21,6 +22,7 @@
                 <td>{{ medium.id }}</td>
                 <td>{{ medium.name }}</td>
                 <td>{{ medium.link }}</td>
+                <td>{{ medium.category.name}}</td>
                 <td>{{ medium.createdAt ? medium.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('edit_media_show', {'id': medium.id}) }}">Afficher</a>

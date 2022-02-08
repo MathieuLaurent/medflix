@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ListExploController extends AbstractController
 {
     #[Route('/list/explo/{id}', name: 'list_explo')]
-    public function listExlo(int $id, MediaRepository $mediaRepository, CategoryRepository $category): Response
+    public function listExplo(int $id, MediaRepository $mediaRepository, CategoryRepository $category): Response
     {
         $list = $mediaRepository->findByCategoryField($id);
         
