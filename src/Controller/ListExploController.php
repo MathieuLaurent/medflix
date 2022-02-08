@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/profile')]
 class ListExploController extends AbstractController
 {
-    #[Route('/list/explo/{id}', name: 'list_explo')]
+    #[Route('/list/{id}', name: 'list_explo')]
     public function listExplo(int $id, MediaRepository $mediaRepository, CategoryRepository $category): Response
     {
         $list = $mediaRepository->findByCategoryField($id);
@@ -29,7 +29,6 @@ class ListExploController extends AbstractController
             elseif($item->getExtension() == "mp4" ||$item->getExtension() == "avi" ||$item->getExtension() == "webm"){
                 $video[] = $item;
             }
-         
         }
         if(empty($img)){
             $img = null;
@@ -40,8 +39,6 @@ class ListExploController extends AbstractController
         if(empty($video)){
             $video = null;
         }
-
-
 
         return $this->render('pages/files.html.twig', [
             'img' => $img,
