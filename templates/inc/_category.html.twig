@@ -1,4 +1,5 @@
 <ul class="list-unstyled">
+<<<<<<< HEAD
 {% for cat in categorys %}
     <li class="list-unstyled">
     <div class="btn-toggle align-items-center collapsed side-link fs-6" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="false">
@@ -18,4 +19,32 @@
     </li>
 {% endfor %}
 </ul>
+=======
+    {% for cat in categorys %}
+        <li class="list-unstyled">           
+            <span class="btn-toggle align-items-center collapsed side-link" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="true">
+            </span>
+    
+            <span class="align-items-center">
+                <a href="{{ path('list_explo', {id:cat.id}) }}" class="side-link">
+                    {{ cat.name }}</a>
+            </span>
+            
+             {% if cat.children is not null %}
+                <div class="collapse show" id="{{cat.name}}-collapse">
+                    <ul class="list-unstyled fw-normal small link">
+                        <li>
+                            <a href="#" class="collapsed" data-bs-toggle="collapse" data-bs-target="#{{cat.name}}-collapse" aria-expanded="true">{{ render(controller( 'App\\Controller\\ListExploController::renderCategory', {catId: cat.id} )) }}</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            {% endif %}
+
+        </li>
+
+    {% endfor %}
+
+    </ul>
+>>>>>>> e80c6a2d693cbc9f05be308a39ebec5bd9f74585
 
