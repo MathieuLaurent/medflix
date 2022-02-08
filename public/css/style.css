@@ -219,8 +219,6 @@ input:-webkit-autofill{
    border: 2px solid var(--alt-bg);
  }
 
-
-
 .accent { 
     position: relative;
     color: var(--red);
@@ -425,6 +423,47 @@ input:-webkit-autofill{
     margin-right: auto;
 
  }
+
+ /*==================== FILTRES EXPLO CSS CLASS ====================*/
+
+.filtres {    
+    width: 80%;
+    background: var(--alt-bg);
+    text-align: right;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+input[type=checkbox] {
+    appearance: none;
+	width: 12px;
+	height: 12px;
+	border: 2px solid var(--green);
+	border-radius: 50%;
+	background-clip: content-box;
+	padding: 1px;
+}
+
+input[type="checkbox"]:checked, input[type="checkbox"]:checked:before {
+    background: var(--border-color);
+  }
+
+input[type="radio"] {
+    appearance: none;
+	width: 12px;
+	height: 12px;
+	border: 2px solid var(--green);
+	border-radius: 50%;
+	background-clip: content-box;
+	padding: 1px;
+}
+
+input[type="radio"]:checked {
+	background-color: var(--border-color);
+}
+
 
 /*==================== FOOTER CSS CLASS ====================*/
 

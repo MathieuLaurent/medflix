@@ -15,7 +15,7 @@
 
                 <h2 class="title mt-4">Explorer la galerie</h2>
 
-                <div class="filtres">
+                <div class="filtres p-4 my-5">
                     {{ render(controller( 'App\\Controller\\FiltreController::renderFiltre')) }}
                 </div>
 
@@ -25,10 +25,10 @@
         {% if img is not null %}
             <h5 class="mt-4">Les images</h5>
 
-            <div class="row row-cols-2 row-cols-xl-4 justify-content-center p-3 box">
+            <div class="row gx-5 row-cols-xxl-3 justify-content-center p-3 box">
 
                 {% for imgItem in img %}
-                        <div class="col mb-2">
+                        <div class="col col-sm-6 mb-2">
                             <div class="card card-custom mb-4 p-1">                        
                                 
                                 <img class="card-img-top img-custom" src="{{asset('/imgMiniature/' ~ imgItem.link)}}"/>
@@ -36,9 +36,9 @@
                                 <div class="card-body p-3">
                                     
                                         
-                                        <h5 class="card-title">{{imgItem.name}} </h5>
+                                        <h5 class="card-title mb-4">{{imgItem.name}} </h5>
     
-                                        <div class="d-flex justify-content-end option">
+                                        <div class="d-flex justify-content-end option my-2">
 
                                             <a href="/" target="_blank">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download logo-card" viewBox="0 0 16 16">
@@ -84,10 +84,10 @@
 {% if video is not null %}
 <h5 class="mt-4">Les vidéos</h5>
 
-<div class="row row-cols-2 row-cols-xl-4 justify-content-center p-3 box">
+<div class="row gx-5 row-cols-xxl-3 justify-content-center p-3 box">
 
     {% for videoItem in video %}
-            <div class="col mb-2">
+            <div class="col col-sm-6 mb-2">
                 <div class="card card-custom mb-4 p-1">                        
                     
                     <video controls class="card-img-top video-custom">
@@ -97,9 +97,9 @@
                     <div class="card-body p-3">
                         
                             
-                            <h5 class="card-title">{{videoItem.name}} </h5>
+                            <h5 class="card-title mb-4">{{videoItem.name}} </h5>
 
-                            <div class="d-flex justify-content-end option">
+                            <div class="d-flex justify-content-end option my-2">
 
                                 <a href="/" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download logo-card" viewBox="0 0 16 16">
@@ -124,18 +124,18 @@
 {% if pdf is not null %}
 <h5 class="mt-4">Les pdf</h5>
 
-<div class="row row-cols-2 row-cols-xl-4 justify-content-center p-3 box">
+<div class="row gx-5 row-cols-xxl-3 justify-content-center p-3 box">
 
     {% for pdfItem in pdf %}
-            <div class="col mb-2">
+            <div class="col col-sm-6 mb-2">
                 <div class="card card-custom mb-4 p-1">                        
                     
                     <div class="card-body p-3">
                         
                             
-                            <h5 class="card-title">{{pdfItem.name}} </h5>
+                            <h5 class="card-title mb-4">{{pdfItem.name}} </h5>
 
-                            <div class="d-flex justify-content-end option">
+                            <div class="d-flex justify-content-end option my-2">
 
                                 <a href="/" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download logo-card" viewBox="0 0 16 16">
