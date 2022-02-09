@@ -383,6 +383,10 @@ input[type="file"]::-webkit-file-upload-button {
     transition: 500ms;
 }
 
+.img-detail {
+    border-radius: 15px;
+}
+
 .logo-card { 
     color: var(--red);
     padding: 0.2em;    
