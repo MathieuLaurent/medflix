@@ -417,6 +417,11 @@ input[type="file"]::-webkit-file-upload-button {
     margin-right: 0;
 }
 
+.video-custom { 
+    width: 350px;
+    height: auto;
+}
+
 /*==================== MODAL CARD EXPLO CSS CLASS ====================*/
 
 .modal-content { 
