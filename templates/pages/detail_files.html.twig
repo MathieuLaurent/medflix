@@ -13,53 +13,22 @@
         <div class="p-2 bd-highlight justify-content-center container-fluid">
 
 
-<button class='btn'> <a href="{{ path('files')}}">Retour à la page précédente</a></button>
+
 
 
                     
 <h2 class="m-4 sub-title">{{img.name}}</h2>
 
-            <div class="row gx-5 row-cols-xxl-3 justify-content-center p-3 box">
+            <div class="d-flex  justify-content-center p-3">
 
-               
-                        <div class="col col-sm-6 mb-2">
-                            <div class="card card-custom mb-4 p-1">                        
-                                
-                                <img  class="card-img-top img-custom" src="{{asset('/imgMiniature/' ~ img.link)}}"/>
-                                
-                                <div class="card-body p-3">
-                                    
-                                        
-                                        <h5  class="card-title mb-4">{{img.name}}</a> </h5>
-    
-<<<<<<< HEAD
-                                        
-                                    
-=======
->>>>>>> c2e9f06ad1d52ddeda78ade1ddfb69287680d9fc
-                                </div>
-                            </div>
+               <img  class="img-detail" src="{{asset('/img/' ~ img.link)}}"/>
+
+            </div>
+<div class="d-flex  justify-content-center p-3">
+            <button class='btn mt-5'> <a href="{{ path('files')}}">Retour à la page précédente</a></button>  
                         </div>
                         
-<div class="modal fade" id="{{img.name|replace({' ': "-"})}}" tabindex="-1" aria-labelledby="{{img.name|replace({' ': "-"})}}Label" aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{img.name}}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="{{asset('/imgInter/' ~ img.link)}}" class="img-modal">
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn" data-bs-dismiss="modal">Fermer</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                
-    
-            </div>
+
          
 
 <!------------------------------------------------------------------------------------------- CARD VIDEO -->
@@ -105,11 +74,7 @@
                             
                             <h5 class="card-title mb-4">{{pdf.name}} </h5>
 
-<<<<<<< HEAD
-                            
-=======
                            
->>>>>>> c2e9f06ad1d52ddeda78ade1ddfb69287680d9fc
                         
                     </div>
                 </div>
