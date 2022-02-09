@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Category;
-use Doctrine\ORM\Mapping\Entity;
+use App\Repository\CategoryRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -20,7 +20,11 @@ class CategoryType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'name',
                 'multiple' => false,
-                'required' => false
+                'required' => false,
+                'query_builder' => function (CategoryRepository $c) {
+                    return $c->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                }
             ])
         ;
     }
