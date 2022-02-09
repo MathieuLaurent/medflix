@@ -16,7 +16,7 @@
 <button class='btn'> <a href='{{ path('files')}}'>Retour à la page précédente</a></button>
 
 
-                    
+{% if img is not null %}                    
 <h2 class="m-4 sub-title">{{img.name}}</h2>
 
             <div class="row gx-5 row-cols-xxl-3 justify-content-center p-3 box">
@@ -56,6 +56,7 @@
     
             </div>
          
+         {% endif %}
 
 <!------------------------------------------------------------------------------------------- CARD VIDEO -->
 
