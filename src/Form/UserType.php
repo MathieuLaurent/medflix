@@ -21,8 +21,8 @@ class UserType extends AbstractType
             [
                 'multiple'=>true,
                 'choices'=> [
-                    "WRITTER"=> "ROLE_WRITTER",
-                    "ADMIN"=>"ROLE_ADMIN"
+                    "WRITTER"=> "WRITTER",
+                    "ADMIN"=>"ADMIN"
                 ],
                 "expanded"=> true
             ])
