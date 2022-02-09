@@ -1,11 +1,4 @@
-<div class="container py-3  d-flex justify-content-center">
-              <div class="card card-login m-5">
-                <form class="card-body p-5 m-3" method="post">
-      
-                    <div class="md-5 mt-md-4 pb-3">
-        
-                        
-                    </div>
+
 
 {{ form_start(form) }}
 
@@ -18,17 +11,15 @@
 
         <div class="form-floating mb-3">
 
-            {{ form_widget(form.roles, {'attr': {'class': 'form-control search'}}) }}
+            {{ form_widget(form.roles, {'attr': {'class': 'form-control search alt-label'}}) }}
             {{ form_label(form.roles, 'Roles', {'label_attr': {'class': 'form-label'}}) }}
     
         </div>
     
-        <div class="d-grid gap-3 col-6 mx-auto mb-4">
     
-            <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+            <button class="btn btn-new mt-4 float-end">{{ button_label|default('Enregistrer') }}</button>
     
-        </div>
 
         {{ form_end(form) }}
 
-        </div></div>
+        

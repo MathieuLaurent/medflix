@@ -1,11 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle Categorie{% endblock %}
+{% block title %}Nouvelle Catégorie{% endblock %}
 
 {% block body %}
-    <h1>Créer une nouvelle catégorie</h1>
 
-    {{ include('edit/editor_category/_form.html.twig') }}
+<div class="container py-3  d-flex justify-content-center">
+    <div class="card card-login m-5">
+      <form class="card-body p-5 m-3">
 
-    <a href="{{ path('editor_category_index') }}">Retour à la liste</a>
+          <div class="md-5 mt-md-4 pb-3">
+
+              <h2 class="fw-bold mb-2 title">Nouvelle catégorie</h2>
+
+          </div>
+
+          <p class="mb-5">
+
+                {{ include('edit/editor_category/_form.html.twig') }}
+
+                <div class="text-center">
+
+                    <a href="{{ path('editor_category_index') }}" class="btn mb-3">Retour à la liste des catégories</a>
+
+                </div>
+
+            </div>
+
+            </p>
+
+            </div>
+            </div>
 {% endblock %}

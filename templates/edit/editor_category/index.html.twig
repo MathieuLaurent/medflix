@@ -3,24 +3,29 @@
 {% block title %}Index des catégories{% endblock %}
 
 {% block body %}
-    <h1>Index des catégories</h1>
+        <div class="container py-3  d-flex justify-content-center">
+            <div class="card card-login m-5">
+            <form class="card-body p-5 m-3">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+                <div class="md-5 mt-md-4 pb-3">
+
+                    <h2 class="fw-bold mb-2 title">Index des catégories</h2>
+
+                </div>
+
+                <p class="mb-5">
+
+                    <div class="example-wrapper">
+                    
+                        <table class="table">
+
         {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
+            <tr class="text-center">
+                <td  colspan="2">{{ category.name }}</td>
+                <td colspan="2"></td>
                 <td>
-                    <a href="{{ path('editor_category_show', {'id': category.id}) }}">Afficher</a>
-                    <a href="{{ path('editor_category_edit', {'id': category.id}) }}">Editer</a>
+                    <a href="{{ path('editor_category_show', {'id': category.id}) }}" class="btn mx-2">Afficher</a>
+                    <a href="{{ path('editor_category_edit', {'id': category.id}) }}" class="btn btn-new mx-2">Editer</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +36,16 @@
         </tbody>
     </table>
 
-    <a href="{{ path('editor_category_new') }}">Créer un nouveau</a>
+    <div class="d-flex justify-content-center">
+
+        <a href="{{ path('editor_category_new') }}" class="btn btn-new m-2">Créer une nouvelle catégorie</a>
+        <a href="{{path('editor')}}" class="btn m-2">Retour à la gestion du back office</a>
+
+    </div>
+            </div>
+
+            </p>
+
+            </div>
+            </div>
 {% endblock %}

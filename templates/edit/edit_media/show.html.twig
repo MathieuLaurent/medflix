@@ -1,34 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Média{% endblock %}
+{% block title %}{{ medium.name }}{% endblock %}
+
 
 {% block body %}
-    <h1>Média</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ medium.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ medium.name }}</td>
-            </tr>
-            <tr>
-                <th>Lien</th>
-                <td>{{ medium.link }}</td>
-            </tr>
-            <tr>
-                <th>Créer le</th>
-                <td>{{ medium.createdAt ? medium.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
+<div class="container py-3  d-flex justify-content-center">
+    <div class="card card-login m-5">
+      <form class="card-body p-5 m-3">
+
+          <div class="md-5 mt-md-4 pb-3">
+
+              <h2 class="fw-bold mb-2 title">{{ medium.name }}</h2>
+
+          </div>
+
+          <p class="mb-1">
+
+            <div class="example-wrapper">
+                <img src="{{asset('/imgInter/' ~ medium.link)}}" class="img-bo mb-1">
+            
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ medium.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ medium.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Lien</th>
+                            <td>{{ medium.link }}</td>
+                        </tr>
+                        <tr>
+                            <th>Créer le</th>
+                            <td>{{ medium.createdAt ? medium.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        </tr>
+                    </tbody>
     </table>
+        <div class="text-center">
+            <a href="{{ path('edit_media_index') }}" class="btn">Retour à la liste</a>
 
-    <a href="{{ path('edit_media_index') }}">Retour à la liste</a>
+            <a href="{{ path('edit_media_edit', {'id': medium.id}) }}" class="btn btn-new">Editer</a>
 
-    <a href="{{ path('edit_media_edit', {'id': medium.id}) }}">Editer</a>
+            {{ include('edit/edit_media/_delete_form.html.twig') }}
+        </div>
 
-    {{ include('edit/edit_media/_delete_form.html.twig') }}
+                    </div>
+
+                    </p>
+
+                    </div>
+                    </div>
 {% endblock %}
