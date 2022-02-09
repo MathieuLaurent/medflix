@@ -24,8 +24,6 @@ window.onload = () => {
                 const content = document.querySelector("#content");
                 content.innerHTML = data.content;
             })
-
-
         })
     });
 }
