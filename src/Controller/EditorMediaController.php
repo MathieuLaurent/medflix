@@ -118,12 +118,19 @@ class EditorMediaController extends AbstractController
             
             $edit = $mediaRepository->find($id);
             $lien = $edit-> getLink();
+            $extension = $edit->getExtension();
             if(!empty($lien)){
-            unlink($this->getParameter('kernel.project_dir').'/public/img/'.$lien);
-            unlink($this->getParameter('kernel.project_dir').'/public/imgMiniature/'.$lien);
-            unlink($this->getParameter('kernel.project_dir').'/public/imgInter/'.$lien);
-            unlink($this->getParameter('kernel.project_dir').'/public/pdf/'.$lien);
-            unlink($this->getParameter('kernel.project_dir').'/public/video/'.$lien);
+                if($extension == "jpg" || $extension == "png" || $extension =="jpeg" || $extension == "gif"){
+                    unlink($this->getParameter('kernel.project_dir').'/public/img/'.$lien);
+                    unlink($this->getParameter('kernel.project_dir').'/public/imgMiniature/'.$lien);
+                    unlink($this->getParameter('kernel.project_dir').'/public/imgInter/'.$lien);
+                }
+                elseif($extension == "pdf"){
+                    unlink($this->getParameter('kernel.project_dir').'/public/pdf/'.$lien);
+                }
+                elseif($extension == "mp4" || $extension == "webm" || $extension == "avi"){
+                    unlink($this->getParameter('kernel.project_dir').'/public/video/'.$lien);
+                }
             
             $medium->setLink(''); 
             $medium->setExtension('');
