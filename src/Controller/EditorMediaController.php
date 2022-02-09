@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Media;
-use App\FileResize;
+use App\Service\FileResize;
 use App\Form\MediaType;
 use Imagine\Gd\Imagine;
 use App\Service\ImageResize;

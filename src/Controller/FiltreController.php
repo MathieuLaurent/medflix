@@ -59,6 +59,7 @@ class FiltreController extends AbstractController
             if(empty($video)){
                 $video = null;
             }
+            
         
         return $this->render('pages/files.html.twig', [
             'img' => $img,
@@ -67,6 +68,7 @@ class FiltreController extends AbstractController
             'categorys' => $category->findByParentField(NULL),
         ]);
     }
+
 
     public function renderFiltre(Request $request){
 

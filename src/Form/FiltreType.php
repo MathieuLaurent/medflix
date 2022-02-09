@@ -44,6 +44,7 @@ class FiltreType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Media::class,
+            'attr' => ['id' => 'filterForm']
         ]);
     }
 }

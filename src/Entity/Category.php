@@ -9,10 +9,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
+    #[Groups("Category")]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -38,6 +40,7 @@ class Category
     private $parent;
 
 
+    #[Groups("Category")]
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Media::class,  orphanRemoval: true)]
     private $media;
 

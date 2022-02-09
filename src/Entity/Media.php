@@ -12,11 +12,13 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource()]
 #[ORM\Entity(repositoryClass: MediaRepository::class)]
 class Media
 {
+    #[Groups("media")]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -43,6 +45,7 @@ class Media
     #[ORM\JoinColumn(nullable: false)]
     private $userAuthor;
 
+    #[Groups("media")]
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'media')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
